@@ -18,6 +18,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 /* Home Page */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/**test */
 
 Auth::routes();
 
