@@ -13,14 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('guest.home');
-});
+/* Home Page */
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
                 // admin Routes
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard']);
@@ -31,12 +28,12 @@ Route::post('/admin/category/edit', [App\Http\Controllers\CategoryController::cl
 
 
         // User Route
-Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard']);
+/* Route::get('/user/register', [App\Http\Controllers\ClientController::class, 'dashboard']); */
 
 
 
 
 
- // Client Routes
- Route::get('/client/dashboard', [App\Http\Controllers\ClientController::class, 'dashboard']);
+
+
 
