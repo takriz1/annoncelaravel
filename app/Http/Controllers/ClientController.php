@@ -6,11 +6,23 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    //
-    public function dashboard(){
-        return view('guest.register');
+
+    public function __construct()
+    {
+        //$this->middleware('auth');
     }
-    public function home(){
-        return view('homepage');
+
+    //
+    public function dashboard()
+    {
+        return view('client.dashboard');
+    }
+    public function addPost()
+    {
+        return view('client.postAdd');
+    }
+    public function posts()
+    {
+        return view('client.posts');
     }
 }
