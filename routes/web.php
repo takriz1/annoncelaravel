@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 /* Home Page */
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /* Home Page */
@@ -24,20 +25,10 @@ Auth::routes();
 
 // admin Routes
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard']);
-Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, 'list'])->middleware('auth','admin');
-Route::post('/admin/category/add', [App\Http\Controllers\CategoryController::class, 'add'])->middleware('auth','admin');
-Route::get('/admin/category/{id}/destroy', [App\Http\Controllers\CategoryController::class, 'destroy'])->middleware('auth','admin');
-Route::post('/admin/category/edit', [App\Http\Controllers\CategoryController::class, 'update'])->middleware('auth','admin');
+Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, 'list'])->middleware('auth', 'admin');
+Route::post('/admin/category/add', [App\Http\Controllers\CategoryController::class, 'add'])->middleware('auth', 'admin');
+Route::get('/admin/category/{id}/destroy', [App\Http\Controllers\CategoryController::class, 'destroy'])->middleware('auth', 'admin');
+Route::post('/admin/category/edit', [App\Http\Controllers\CategoryController::class, 'update'])->middleware('auth', 'admin');
 
 //TODO client Routes
-
-        // User Route
-/* Route::get('/user/register', [App\Http\Controllers\ClientController::class, 'dashboard']); */
-
-
-
-
-
-
-
-
+Route::get('/user/addpost', [App\Http\Controllers\ClientController::class, 'addPost']);
