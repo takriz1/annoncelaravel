@@ -52,7 +52,7 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/behance.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/behance.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Behance
                                         </p>
@@ -60,21 +60,21 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/google-cloud.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/google-cloud.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Cloud</p>
                                     </a></div>
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/slack.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/slack.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Slack</p>
                                     </a></div>
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/github.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/github.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Github
                                         </p>
@@ -82,7 +82,7 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/bitbucket.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/bitbucket.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">BitBucket
                                         </p>
@@ -90,14 +90,14 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/google-drive.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/google-drive.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Drive</p>
                                     </a></div>
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/trello.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/trello.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Trello
                                         </p>
@@ -105,14 +105,14 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/figma.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/figma.png') }}" alt=""
                                             width="20">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Figma</p>
                                     </a></div>
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/twitter.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/twitter.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Twitter
                                         </p>
@@ -120,7 +120,7 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/pinterest.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/pinterest.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Pinterest
                                         </p>
@@ -128,7 +128,7 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/linkedin.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/linkedin.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Linkedin
                                         </p>
@@ -136,14 +136,14 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/google-maps.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/google-maps.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Maps</p>
                                     </a></div>
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/google-photos.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/google-photos.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Photos
                                         </p>
@@ -151,7 +151,7 @@
                                 <div class="col-4"><a
                                         class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3"
                                         href="#!" target="_blank"><img
-                                            src="assets/img/nav-icons/spotify.png" alt=""
+                                            src="{{ asset('dashassets/img/nav-icons/spotify.png') }}" alt=""
                                             width="30">
                                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Spotify
                                         </p>
@@ -173,7 +173,7 @@
                         <div class="card-body p-0 overflow-auto scrollbar" style="height: 18rem;">
                             <div class="text-center pt-4 pb-3">
                                 <div class="avatar avatar-xl"><img class="rounded-circle"
-                                        src="assets/img/team/57.png" alt=""></div>
+                                        src="{{ asset('dashassets/img/team/57.png') }}" alt=""></div>
                                 <h6 class="mt-2">Jerry Seinfield</h6>
                             </div>
                             <div class="mb-3 mx-3"><input class="form-control form-control-sm"
