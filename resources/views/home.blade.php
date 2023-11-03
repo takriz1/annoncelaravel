@@ -8,145 +8,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>NexusPlus - Classified Ads and Listing Template</title>
 
-    <link rel="stylesheet" type="text/css" href="{{asset('mainassets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('mainassets/fonts/line-icons.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/fonts/line-icons.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('mainassets/css/slicknav.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/slicknav.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('mainassets/css/color-switcher.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/color-switcher.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('mainassets/css/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/animate.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('mainassets/css/owl.carousel.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/owl.carousel.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('mainassets/css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/main.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('mainassets/css/responsive.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/responsive.css') }}">
 </head>
 
 <body>
 
-    @include('inc.navbar')
+    <header id="header-wrap">
 
-    <section id="categories">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 col-md-12 col-xs-12">
-                    <div id="categories-icon-slider" class="categories-wrapper owl-carousel owl-theme">
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-1.png')}}" alt="">
-                                        </div>
-                                        <h4>Bicycle</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-2.png')}}" alt="">
-                                        </div>
-                                        <h4>Furniture</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-3.png')}}" alt="">
-                                        </div>
-                                        <h4>Laptop</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-4.png')}}" alt="">
-                                        </div>
-                                        <h4>Electronic</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-5.png')}}" alt="">
-                                        </div>
-                                        <h4>Toys</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-6.png')}}" alt="">
-                                        </div>
-                                        <h4>Cloths</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-1.png')}}" alt="">
-                                        </div>
-                                        <h4>Bicycle</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-2.png')}}" alt="">
-                                        </div>
-                                        <h4>Furniture</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="category.html">
-                                <div class="category-icon-item">
-                                    <div class="icon-box">
-                                        <div class="icon">
-                                            <img src="{{asset('mainassets/img/category/img-3.png')}}" alt="">
-                                        </div>
-                                        <h4>Laptop</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
+        {{-- Include top bar --}}
+
+        @include('inc.topbar')
+
+
+        {{-- Include nav bar --}}
+
+        @include('inc.navbar')
 
 
     <section class="featured section-padding">
@@ -160,8 +51,8 @@
                                 <span class="bg-green"><i class="lni-heart"></i></span>
                                 <span><i class="lni-bookmark"></i></span>
                             </div>
-                            <a href="#"><img class="img-fluid" src="{{asset('mainassets/img/featured/img-1.jpg')}}"
-                                    alt=""></a>
+                            <a href="#"><img class="img-fluid"
+                                    src="{{ asset('mainassets/img/featured/img-1.jpg') }}" alt=""></a>
                         </figure>
                         <div class="feature-content">
                             <div class="product">
@@ -199,8 +90,8 @@
                                 <span class="bg-green"><i class="lni-heart"></i></span>
                                 <span><i class="lni-bookmark"></i></span>
                             </div>
-                            <a href="#"><img class="img-fluid" src="{{asset('mainassets/img/featured/img-2.jpg')}}"
-                                    alt=""></a>
+                            <a href="#"><img class="img-fluid"
+                                    src="{{ asset('mainassets/img/featured/img-2.jpg') }}" alt=""></a>
                         </figure>
                         <div class="feature-content">
                             <div class="product">
@@ -235,8 +126,8 @@
                                 <span class="bg-green"><i class="lni-heart"></i></span>
                                 <span><i class="lni-bookmark"></i></span>
                             </div>
-                            <a href="#"><img class="img-fluid" src="{{asset('mainassets/img/featured/img-3.jpg')}}"
-                                    alt=""></a>
+                            <a href="#"><img class="img-fluid"
+                                    src="{{ asset('mainassets/img/featured/img-3.jpg') }}" alt=""></a>
                         </figure>
                         <div class="feature-content">
                             <div class="product">
@@ -274,8 +165,8 @@
                                 <span class="bg-green"><i class="lni-heart"></i></span>
                                 <span><i class="lni-bookmark"></i></span>
                             </div>
-                            <a href="#"><img class="img-fluid" src="{{asset('mainassets/img/featured/img-4.jpg')}}"
-                                    alt=""></a>
+                            <a href="#"><img class="img-fluid"
+                                    src="{{ asset('mainassets/img/featured/img-4.jpg') }}" alt=""></a>
                         </figure>
                         <div class="feature-content">
                             <div class="product">
@@ -310,8 +201,8 @@
                                 <span class="bg-green"><i class="lni-heart"></i></span>
                                 <span><i class="lni-bookmark"></i></span>
                             </div>
-                            <a href="#"><img class="img-fluid" src="{{asset('mainassets/img/featured/img-5.jpg')}}"
-                                    alt=""></a>
+                            <a href="#"><img class="img-fluid"
+                                    src="{{ asset('mainassets/img/featured/img-5.jpg') }}" alt=""></a>
                         </figure>
                         <div class="feature-content">
                             <div class="product">
@@ -349,8 +240,8 @@
                                 <span class="bg-green"><i class="lni-heart"></i></span>
                                 <span><i class="lni-bookmark"></i></span>
                             </div>
-                            <a href="#"><img class="img-fluid" src="{{asset('mainassets/img/featured/img-6.jpg')}}"
-                                    alt=""></a>
+                            <a href="#"><img class="img-fluid"
+                                    src="{{ asset('mainassets/img/featured/img-6.jpg') }}" alt=""></a>
                         </figure>
                         <div class="feature-content">
                             <div class="product">
@@ -392,7 +283,8 @@
                         <div class="item">
                             <div class="product-item">
                                 <div class="carousel-thumb">
-                                    <img class="img-fluid" src="{{asset('mainassets/img/product/img1.jpg')}}" alt="">
+                                    <img class="img-fluid" src="{{ asset('mainassets/img/product/img1.jpg') }}"
+                                        alt="">
                                     <div class="overlay">
                                         <div>
                                             <a class="btn btn-common" href="ads-details.html">View Details</a>
@@ -435,7 +327,8 @@
                         <div class="item">
                             <div class="product-item">
                                 <div class="carousel-thumb">
-                                    <img class="img-fluid" src="{{asset('mainassets/img/product/img2.jpg')}}" alt="">
+                                    <img class="img-fluid" src="{{ asset('mainassets/img/product/img2.jpg') }}"
+                                        alt="">
                                     <div class="overlay">
                                         <div>
                                             <a class="btn btn-common" href="ads-details.html">View Details</a>
@@ -475,7 +368,8 @@
                         <div class="item">
                             <div class="product-item">
                                 <div class="carousel-thumb">
-                                    <img class="img-fluid" src="{{asset('mainassets/img/product/img3.jpg')}}" alt="">
+                                    <img class="img-fluid" src="{{ asset('mainassets/img/product/img3.jpg') }}"
+                                        alt="">
                                     <div class="overlay">
                                         <div>
                                             <a class="btn btn-common" href="ads-details.html">View Details</a>
@@ -518,7 +412,8 @@
                         <div class="item">
                             <div class="product-item">
                                 <div class="carousel-thumb">
-                                    <img class="img-fluid" src="{{asset('mainassets/img/product/img4.jpg')}}" alt="">
+                                    <img class="img-fluid" src="{{ asset('mainassets/img/product/img4.jpg') }}"
+                                        alt="">
                                     <div class="overlay">
                                         <div>
                                             <a class="btn btn-common" href="ads-details.html">View Details</a>
@@ -558,7 +453,8 @@
                         <div class="item">
                             <div class="product-item">
                                 <div class="carousel-thumb">
-                                    <img class="img-fluid" src="{{asset('mainassets/img/product/img5.jpg')}}" alt="">
+                                    <img class="img-fluid" src="{{ asset('mainassets/img/product/img5.jpg') }}"
+                                        alt="">
                                     <div class="overlay">
                                         <div>
                                             <a class="btn btn-common" href="ads-details.html">View Details</a>
@@ -598,7 +494,8 @@
                         <div class="item">
                             <div class="product-item">
                                 <div class="carousel-thumb">
-                                    <img class="img-fluid" src="{{asset('mainassets/img/product/img6.jpg')}}" alt="">
+                                    <img class="img-fluid" src="{{ asset('mainassets/img/product/img6.jpg') }}"
+                                        alt="">
                                     <div class="overlay">
                                         <div>
                                             <a class="btn btn-common" href="ads-details.html">View Details</a>
@@ -1107,10 +1004,10 @@
                                     <strong><i class="lni-envelope"></i></strong><span><a
                                             href="http://preview.uideck.com/cdn-cgi/l/email-protection"
                                             class="__cf_email__"
-                                            data-cfemail="cdaea2a3b9acaeb98da0aca4a1e3aea2a0">[email&#160;protected]</a>
+                                            data-cfemail="9efdf1f0eafffdeadef3fff7f2b0fdf1f3">[email&#160;protected]</a>
                                         <br> <a href="http://preview.uideck.com/cdn-cgi/l/email-protection"
                                             class="__cf_email__"
-                                            data-cfemail="d8abada8a8b7aaac98b5b9b1b4f6bbb7b5">[email&#160;protected]</a></span>
+                                            data-cfemail="e4979194948b9690a489858d88ca878b89">[email&#160;protected]</a></span>
                                 </li>
                                 <li>
                                     <strong><i class="lni-map-marker"></i></strong><span><a href="#">9870 St
@@ -1148,7 +1045,9 @@
     </div>
 
 
-    <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+    <script data-cfasync="false"
+        src="{{ asset('mainassets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') }}"></script>
     <script src="{{ asset('mainassets/js/jquery-min.js') }}"></script>
     <script src="{{ asset('mainassets/js/popper.min.js') }}"></script>
     <script src="{{ asset('mainassets/js/bootstrap.min.js') }}"></script>
