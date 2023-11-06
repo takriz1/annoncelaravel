@@ -29,7 +29,7 @@ class HomeController extends Controller
             if (Auth::user()->role == "admin") {
                 return  Redirect('/admin/dashboard');
             } else if (Auth::user()->role == "user") {
-                return Redirect('/user/addpost');
+                return Redirect('/user/account');
             } else {
                 return view('home');
             }

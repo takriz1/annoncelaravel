@@ -7,7 +7,7 @@
                                     data-feather="cast"></span></span><span
                                 class="nav-link-text">Category</span></div>
                     </a></li>
-                    <li class="nav-item"><a class="nav-link active" href="index.html">
+                    <li class="nav-item"><a class="nav-link active" href="/admin/product">
                         <div class="d-flex align-items-center"><span class="nav-link-icon"><span
                                     data-feather="cast"></span></span><span
                                 class="nav-link-text">Product</span></div>

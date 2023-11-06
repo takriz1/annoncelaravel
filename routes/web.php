@@ -29,6 +29,12 @@ Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, '
 Route::post('/admin/category/add', [App\Http\Controllers\CategoryController::class, 'add'])->middleware('auth', 'admin');
 Route::get('/admin/category/{id}/destroy', [App\Http\Controllers\CategoryController::class, 'destroy'])->middleware('auth', 'admin');
 Route::post('/admin/category/edit', [App\Http\Controllers\CategoryController::class, 'update'])->middleware('auth', 'admin');
+Route::get('/admin/product', [App\Http\Controllers\ProductController::class, 'ProductList'])->middleware('auth', 'admin');
+
 
 //TODO client Routes
-Route::get('/user/addpost', [App\Http\Controllers\ClientController::class, 'addPost']);
+Route::get('/user/account', [App\Http\Controllers\ClientController::class, 'ClientPosts'])->middleware('auth');
+Route::get('/user/post', [App\Http\Controllers\ClientController::class, 'idPost'])->middleware('auth');
+Route::post('/user/add', [App\Http\Controllers\ProductController::class, 'add'])->middleware('auth');
+
+

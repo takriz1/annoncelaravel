@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -17,12 +20,16 @@ class ClientController extends Controller
     {
         return view('client.dashboard');
     }
-    public function addPost()
+    public function ClientPosts()
     {
-        return view('client.postAdd');
+        $categories = Category::all();
+        $produits = Product::all();
+        return view('client.postAdd')->with('categories', $categories)->with('produits', $produits);
     }
-    public function posts()
-    {
-        return view('client.posts');
+    public function idPost(){
+        $categories = Category::all();
+        $produits = Product::all();
+        return view('client.posts')->with('categories', $categories)->with('produits', $produits);
     }
+
 }
