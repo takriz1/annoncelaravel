@@ -31,8 +31,9 @@
                                 Register</a>
                         @endif
                     @else
-                        <a href="{{ route('login') }}" class="header-top-button"><i class="lni-lock"></i>
-                            {{ Auth::user()->name }}</a> |
+                        <a href="#" class="header-top-button"><i class="lni-lock"></i>
+                            {{ Auth::user()->name }}
+                        </a> |
                         <a class="header-top-button" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
