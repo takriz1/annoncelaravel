@@ -64,7 +64,8 @@
                             <div class="sidebar-box">
                                 <div class="user">
                                     <figure>
-                                        <a href="#"><img src="{{ asset('mainassets/img/author/img1.jpg') }}" alt=""></a>
+                                        <a href="#"><img src="{{ asset('mainassets/img/author/img1.jpg') }}"
+                                                alt=""></a>
                                     </figure>
                                     <div class="usercontent">
                                         <h3>{{ Auth::user()->name }}</h3>
@@ -127,7 +128,7 @@
                             <div class="widget">
                                 <h4 class="widget-title">Advertisement</h4>
                                 <div class="add-box">
-                                    <img class="img-fluid" src="{{asset('mainassets/img/img1.jpg')}}" alt="">
+                                    <img class="img-fluid" src="{{ asset('mainassets/img/img1.jpg') }}" alt="">
                                 </div>
                             </div>
                         </aside>
@@ -137,86 +138,94 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
                                 <form action="/user/add" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                <div class="inner-box">
-                                    <div class="dashboard-box">
-                                        <h2 class="dashbord-title">Ad Detail</h2>
-                                    </div>
-                                    <div class="dashboard-wrapper">
-                                        <div class="form-group mb-3">
-                                            <label class="control-label">Project Title</label>
-                                            <input class="form-control input-md" name="name" placeholder="Title"
-                                                type="text">
+                                    <div class="inner-box">
+                                        <div class="dashboard-box">
+                                            <h2 class="dashbord-title">Ad Detail</h2>
+                                        </div>
+                                        <div class="dashboard-wrapper">
+                                            <div class="form-group mb-3">
+                                                <label class="control-label">Project Title</label>
+                                                <input class="form-control input-md" name="name" placeholder="Title"
+                                                    type="text">
                                                 @error('name')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
 
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-3 tg-inputwithicon">
-                                            <label class="control-label">Categories</label>
-                                            <div class="tg-select form-control">
-                                                <select name="categorie">
-
-                                                    @foreach (  $categories as $c )
-
-
-                                                    <option value="{{$c->id}}">{{$c->libelle_c}}</option>
-                                                    @endforeach
-                                                </select>
+                                                    </div>
+                                                @enderror
+                                                <input type="hidden" name="userid" value="{{ Auth::user()->id }}">
                                             </div>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label class="control-label">Price Title</label>
-                                            <input class="form-control input-md" name="price"
-                                                placeholder="Ad your Price" type="text">
+                                            <div class="form-group mb-3 tg-inputwithicon">
+                                                <label class="control-label">Categories</label>
+                                                <div class="tg-select form-control">
+                                                    <select name="categorie">
+
+                                                        @foreach ($categories as $c)
+                                                            <option value="{{ $c->id }}">{{ $c->libelle_c }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label class="control-label">Price Title</label>
+                                                <input class="form-control input-md" name="price"
+                                                    placeholder="Ad your Price" type="text">
                                                 @error('price')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
 
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label class="control-label">Description </label>
-                                            <textarea name="description"></textarea>
-                                            @error('description')
-                                            <div class="alert alert-danger">
-                                                {{ $message }}
-
+                                                    </div>
+                                                @enderror
                                             </div>
-                                        @enderror
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label class="control-label">Quantity</label>
-                                            <input class="form-control input-md" name="qtt" placeholder="Title"
-                                                type="number">
+                                            <div class="form-group mb-3">
+                                                <label class="control-label">Description </label>
+                                                <textarea name="description"></textarea>
+                                                @error('description')
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
+
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label class="control-label">Quantity</label>
+                                                <input class="form-control input-md" name="qtt"
+                                                    placeholder="Title" type="number">
                                                 @error('qtt')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
 
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        <label class="tg-fileuploadlabel" for="tg-photogallery">
-                                            <span>Drop files anywhere to upload</span>
-                                            <span>Or</span>
-                                            <span class="btn btn-common">Select Files</span>
-                                            <span>Maximum upload file size: 500 KB</span>
-                                            <input id="tg-photogallery" class="tg-fileinput" type="file"
-                                                name="image">
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <label class="tg-fileuploadlabel" for="tg-photogallery">
+                                                <span>Drop files anywhere to upload</span>
+                                                <span>Or</span>
+                                                <span class="btn btn-common">Select Files</span>
+                                                <span>Maximum upload file size: 500 KB</span>
+                                                <input id="tg-photogallery" class="tg-fileinput" type="file"
+                                                    name="image">
                                                 @error('image')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
 
-                                                </div>
-                                            @enderror
-                                        </label>
+                                                    </div>
+                                                @enderror
+                                            </label>
+                                        </div>
+                                        <div class="mb-3">
+                                        <button class="btn btn-common" type="submit" >Post Here</button>
+                                        @if (session()->has('message'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('message') }}
+                                        </div>
+                                    @endif
                                     </div>
-                                    <button type="submit">Post Here</button>
-                                </div>
-                            </form>
+                                    </div>
+                                </form>
                             </div>
+
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
                                 <div class="inner-box">
                                     <div class="tg-contactdetail">
@@ -241,7 +250,7 @@
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label class="control-label">FirstName*</label>
-                                              <p>{{ Auth::user()->first_name }}</p>
+                                                <p>{{ Auth::user()->first_name }}</p>
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label class="control-label">LastName*</label>
@@ -287,7 +296,8 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-xs-6 col-mb-12">
                             <div class="widget">
-                                <div class="footer-logo"><img src="{{asset('mainassets/img/logo.png')}} " alt=""></div>
+                                <div class="footer-logo"><img src="{{ asset('mainassets/img/logo.png') }} "
+                                        alt=""></div>
                                 <div class="textwidget">
                                     <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
                                         quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt
@@ -374,19 +384,19 @@
 
 
         <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-        <script src="{{asset('mainassets/js/jquery-min.js')}}"></script>
-        <script src="{{asset('mainassets/js/popper.min.js')}}"></script>
-        <script src="{{asset('mainassets/js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('mainassets/js/color-switcher.js')}}"></script>
-        <script src="{{asset('mainassets/js/jquery.counterup.min.js')}}"></script>
-        <script src="{{asset('mainassets/js/waypoints.min.js')}}"></script>
-        <script src="{{asset('mainassets/js/wow.js')}}"></script>
-        <script src="{{asset('mainassets/js/owl.carousel.min.js')}}"></script>
-        <script src="{{asset('mainassets/js/jquery.slicknav.js')}}"></script>
-        <script src="{{asset('mainassets/js/main.js')}}"></script>
-        <script src="{{asset('mainassets/js/form-validator.min.js')}}"></script>
-        <script src="{{asset('mainassets/js/contact-form-script.min.js')}}"></script>
-        <script src="{{asset('mainassets/js/summernote.js')}}"></script>
+        <script src="{{ asset('mainassets/js/jquery-min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/color-switcher.js') }}"></script>
+        <script src="{{ asset('mainassets/js/jquery.counterup.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/waypoints.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/wow.js') }}"></script>
+        <script src="{{ asset('mainassets/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/jquery.slicknav.js') }}"></script>
+        <script src="{{ asset('mainassets/js/main.js') }}"></script>
+        <script src="{{ asset('mainassets/js/form-validator.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/contact-form-script.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/summernote.js') }}"></script>
         <script>
             $('#summernote').summernote({
                 height: 250, // set editor height

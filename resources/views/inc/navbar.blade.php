@@ -68,6 +68,14 @@
                         <a class="dropdown-item" href="single-post.html">Blog Details</a>
                     </div>
                 </li>
+                @if (Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/account">
+                            MyAccount
+                        </a>
+                    </li>.
+
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">
                         Contact
@@ -144,43 +152,13 @@
                         property, jobs and more</p>
                     <div class="search-bar">
                         <div class="search-inner">
-                            <form class="search-form">
+                            <form class="search-form" action="/product/search" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <input type="text" name="customword" class="form-control"
                                         placeholder="What are you looking for?">
                                 </div>
-                                <div class="form-group inputwithicon">
-                                    <div class="select">
-                                        <select>
-                                            <option value="none">Locations</option>
-                                            <option value="none">New York</option>
-                                            <option value="none">California</option>
-                                            <option value="none">Washington</option>
-                                            <option value="none">Birmingham</option>
-                                            <option value="none">Chicago</option>
-                                            <option value="none">Phoenix</option>
-                                        </select>
-                                    </div>
-                                    <i class="lni-target"></i>
-                                </div>
-                                <div class="form-group inputwithicon">
-                                    <div class="select">
-                                        <select>
-                                            <option value="none">Select Catagory</option>
-                                            <option value="none">Jobs</option>
-                                            <option value="none">Electronics</option>
-                                            <option value="none">Mobile</option>
-                                            <option value="none">Training</option>
-                                            <option value="none">Pets</option>
-                                            <option value="none">Real Estate</option>
-                                            <option value="none">Services</option>
-                                            <option value="none">Training</option>
-                                            <option value="none">Vehicles</option>
-                                        </select>
-                                    </div>
-                                    <i class="lni-menu"></i>
-                                </div>
-                                <button class="btn btn-common" type="button"><i class="lni-search"></i>
+                                <button class="btn btn-common" type="submit"><i class="lni-search"></i>
                                     Search Now</button>
                             </form>
                         </div>

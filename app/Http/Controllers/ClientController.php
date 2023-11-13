@@ -16,20 +16,13 @@ class ClientController extends Controller
     }
 
     //
-    public function dashboard()
-    {
-        return view('client.dashboard');
+
+    public function home(){
+        $category = Category::all();
+        $product = Product::all();
+        return view('home')->with('category',$category)->with('product',$product);
     }
-    public function ClientPosts()
-    {
-        $categories = Category::all();
-        $produits = Product::all();
-        return view('client.postAdd')->with('categories', $categories)->with('produits', $produits);
-    }
-    public function idPost(){
-        $categories = Category::all();
-        $produits = Product::all();
-        return view('client.posts')->with('categories', $categories)->with('produits', $produits);
-    }
+
+
 
 }

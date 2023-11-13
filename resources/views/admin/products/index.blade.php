@@ -46,17 +46,20 @@
             <div class="content">
                 <div class="pb-5">
                   <div class="row g-5">
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Category</button>
-
-                    <h4 class="mt-4 mb-3">Table Dark</h4>
+                    <h4 class="mt-4 mb-3">Products List</h4>
                     <table class="table table-striped table-dark">
                       <thead>
                         <tr>
+                            <th scope="col">Category Name</th>
+                            <th scope="col">Client Name</th>
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <th scope="col">Description</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Quantity</th>
                           <th scope="col">Image</th>
                           <th scope="col">Action</th>
+
                         </tr>
                       </thead>
                       <tbody>
@@ -64,15 +67,30 @@
 
 
                         <tr>
+                            <th scope="row">{{ $p->category->libelle_c }}</th>
+                            <th scope="row"> {{ $p->user->name }}</th>
                           <th scope="row">{{ $p->id  }}</th>
                           <td>{{ $p->name }}</td>
                           <td>{{ $p->description }}</td>
-                          <td><img src="{{ asset('uploads.produits') }}/{{ $p->image}}" width="100"></td>
+                          <td>{{ $p->price }} TND</td>
+                          <td>{{ $p->qtt }}</td>
+                          <td><img src="{{ asset('uploads'.'/'.'produits') }}/{{ $p->image}}" width="100"></td>
                           <td>
-                            <a  h data-bs-toggle="modal"
-                            data-bs-target="#editCategory{{ $p->id }}" class="btn btn-outline-info me-1 mb-1" type="button">Edit</a>
-                            <a onclick="return confirm('Do you really want to delete this category?')" href="/admin/category/{{$p->id}}/destroy" class="btn btn-outline-danger me-1 mb-1" type="button">Delete</a>
-                          </td>
+                            @if($products->active)
+                            <span class="badge bg-primary">Product Active</span>
+                            @else
+                            <span class="badge bg-warning">Product Disavtive</span>
+
+                            @endif
+                        </td>
+                        <td>
+                            @if($products->active)
+                            <a href="/admin/product/{{$p->id}}/disactive" class="btn btn-danger">Disactive</a>
+                            @else
+                            <a href="/admin/product/{{$p->id}}/active" class="btn btn-success">Active</a>
+                            @endif
+                        </td>
+
                         </tr>
 
                         @endforeach
@@ -103,67 +121,7 @@
         </div>
 
     </main>
-    <!--- Modal Ajout -->
 
-    <!--- Modal Edit --->
-    @foreach ( $products as $index => $p  )
-
-
-    <div class="modal fade" id="editCategory{{ $p->id }}" tabindex="-1" data-bs-backdrop="static" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header bg-primary">
-              <h5 class="modal-title text-white" id="staticBackdropLabel">Edit Product</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><svg class="svg-inline--fa fa-times fa-w-11 fs--1 text-white" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg=""><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg><!-- <span class="fas fa-times fs--1 text-white"></span> Font Awesome fontawesome.com --></button>
-            </div>
-
-            <form action="/admin/category/edit" method="POST" enctype="multipart/form-data">
-                @csrf
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label class="form-label" for="exampleFormControlInput1">Product Name : <span class="text-primary">{{ $c->libelle_c }}</span></label>
-                    <input class="form-control form-control" id="sizingInput" type="text" placeholder="Category name" name="lib" value="{{$c->libelle_c}}">
-                    @error('lib')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-
-                    </div>
-                @enderror
-                  </div>
-                  <div class="mb-0">
-                    <label class="form-label" for="exampleTextarea">Products Description </label>
-                    <textarea class="form-control" id="exampleTextarea" rows="3" name="desc">{{ $p->description_c }}</textarea>
-                    @error('desc')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-
-                    </div>
-                @enderror
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label" for="customFile">Choose Image</label>
-                    <input class="form-control" id="customFile" type="file" name="image">
-                    @error('image')
-                    <div class="alert alert-danger">
-                        {{ $message }}
-
-                    </div>
-                @enderror
-                  </div>
-                  <input type="hidden" value="{{ $p->id }}" name="id_prod">
-
-            </div>
-
-
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Okay</button>
-                <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button>
-            </div>
-        </form>
-          </div>
-        </div>
-      </div>
-
-    @endforeach
     <script src="{{ asset('dashassets/js/phoenix.js') }}"></script>
     <script src="{{ asset('dashassets/js/ecommerce-dashboard.js') }}"></script>
 

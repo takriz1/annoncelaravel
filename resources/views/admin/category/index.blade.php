@@ -57,6 +57,7 @@
                           <th scope="col">Description</th>
                           <th scope="col">Image</th>
                           <th scope="col">Action</th>
+                          <th scope="col">Stats</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -70,9 +71,12 @@
                           <td><img src="{{ asset('uploads') }}/{{ $c->image_c}}" width="100"></td>
                           <td>
                             <a  h data-bs-toggle="modal"
-                            data-bs-target="#editCategory{{ $c->id }}" class="btn btn-outline-info me-1 mb-1" type="button">Edit</a>
-                            <a onclick="return confirm('Do you really want to delete this category?')" href="/admin/category/{{$c->id}}/destroy" class="btn btn-outline-danger me-1 mb-1" type="button">Delete</a>
+                            data-bs-target="#editCategory{{ $c->id }}" class="btn btn-outline-info me-1 mb-1" type="button">Edit
+                            </a>
+                            <a onclick="return confirm('Do you really want to delete this category?')" href="/admin/category/{{$c->id}}/destroy" class="btn btn-outline-danger me-1 mb-1" type="button">Delete
+                            </a>
                           </td>
+                          <td>1</td>
                         </tr>
 
                         @endforeach
