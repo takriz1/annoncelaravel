@@ -49,7 +49,7 @@
                         <a class="dropdown-item" href="about.html">About Us</a>
                         <a class="dropdown-item" href="services.html">Services</a>
                         <a class="dropdown-item" href="ads-details.html">Ads Details</a>
-                        <a class="dropdown-item" href="'/user/post'">Ads Post</a>
+                        <a class="dropdown-item" href="/user/add">Ads Post</a>
                         <a class="dropdown-item" href="pricing.html">Packages</a>
                         <a class="dropdown-item" href="testimonial.html">Testimonial</a>
                         <a class="dropdown-item" href="faq.html">FAQ</a>
@@ -75,7 +75,7 @@
                 </li>
             </ul>
             <div class="post-btn">
-                <a class="btn btn-common" href="/user/post"><i class="lni-pencil-alt"></i> Post an Ad</a>
+                <a class="btn btn-common" href="/user/add"><i class="lni-pencil-alt"></i> Post an Ad</a>
             </div>
         </div>
     </div>

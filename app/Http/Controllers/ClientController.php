@@ -23,13 +23,13 @@ class ClientController extends Controller
     public function ClientPosts()
     {
         $categories = Category::all();
-        $produits = Product::all();
-        return view('client.postAdd')->with('categories', $categories)->with('produits', $produits);
+        $products = Product::all();
+        return view('client.posts')->with('categories', $categories)->with('products', $products);
     }
-    public function idPost(){
+    public function idPost()
+    {
         $categories = Category::all();
-        $produits = Product::all();
-        return view('client.posts')->with('categories', $categories)->with('produits', $produits);
+        $products = Product::all();
+        return view('client.posts')->with('categories', $categories)->with('products', $products);
     }
-
 }

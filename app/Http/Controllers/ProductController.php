@@ -29,15 +29,15 @@ class ProductController extends Controller
 
         $newname = uniqid();// unique name
         $image = $request->file('image');
-        $newname.=".".$image->getClientOriginalExtension();// JPG
-        $destinationPath = 'uploads.produits';
+        $newname.=".".$image->getClientOriginalExtension();// JPG => concatenate image name with image extension
+        $destinationPath = 'uploads/products';
         $image->move($destinationPath, $newname);
 
         $produit->image = $newname;
         if($produit->save()){
-            return view('client.postAdd') ;
+            return view('client.postAdd') ; // to test : redirect()->back();
         }else{
-            echo "error";
+            echo "error"; // to do : pass the error message to front
         }
     }
     public function ProductList(){
