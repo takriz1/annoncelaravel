@@ -160,7 +160,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ( $produits as $index => $p )
+                                        @foreach ( $products as $index => $p )
 
 
                                         <tr data-category="active">
@@ -172,7 +172,7 @@
                                                 </div>
                                             </td>
                                             <td class="photo"><img class="img-fluid"
-                                                    src="{{asset('uploads'.'/'.'produits')}}/{{$p->image}}" alt=""></td>
+                                                    src="{{asset('uploads/products/')}}/{{$p->image}}" alt=""></td>
                                             <td data-title="Title">
                                                 <h3>{{$p->name}}</h3>
                                             </td>
@@ -279,7 +279,7 @@
 
 
   <!-- Modal -->
-  @foreach ( $produits as $p)
+  @foreach ( $products as $p)
 
 
   <div class="modal fade" id="editProduct{{$p->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

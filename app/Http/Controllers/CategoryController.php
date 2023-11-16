@@ -7,15 +7,17 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-       // Display Categories
-       public function list(){
+    // Display Categories
+    public function list()
+    {
         $categories = Category::all();
         return view('admin.category.index')->with('categories', $categories);
-       }
+    }
 
-       // Add New Category
+    // Add New Category
 
-       public function add(Request $request){
+    public function add(Request $request)
+    {
         $request->validate([
             'lib' => 'required',
             'desc' => 'required',
@@ -28,40 +30,42 @@ class CategoryController extends Controller
         //file upload
 
 
-        $newname = uniqid();// unique name
+        $newname = uniqid(); // unique name
         $image = $request->file('image');
-        $newname.=".".$image->getClientOriginalExtension();// JPG
-        $destinationPath = 'uploads';
+        $newname .= "." . $image->getClientOriginalExtension(); // JPG
+        $destinationPath = 'uploads/categories';
         $image->move($destinationPath, $newname);
 
 
         $category->image_c = $newname;
 
-       if($category->save()) {
-        return redirect()->back();
-    }else{
-        echo "error";
+        if ($category->save()) {
+            return redirect()->back();
+        } else {
+            echo "error";
+        }
     }
-}
 
     // Delete Category
-    public function destroy($id){
+    public function destroy($id)
+    {
         $categorie = Category::find($id);
-        $file_path = public_path().'/uploads/'. $categorie->image_c;
+        $file_path = public_path() . '/uploads/categories/' . $categorie->image_c;
         unlink($file_path);
-        if($categorie->delete()){
+        if ($categorie->delete()) {
             return redirect()->back();
-        }else{
+        } else {
             echo "error";
         }
     }
 
     // Edit Category
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $request->validate([
-            'lib'=> 'required',
-            'desc'=> 'required',
-            'image'=> 'required',
+            'lib' => 'required',
+            'desc' => 'required',
+            'image' => 'required',
         ]);
         $id = $request->id_cat;
         $cat = Category::find($id);
@@ -70,28 +74,25 @@ class CategoryController extends Controller
         $cat->description_c = $request->desc;
 
         //upload image
-        if($request->file('image')){
+        if ($request->file('image')) {
 
             // supprimer image precedent
-            $file_path = public_path().'/uploads/'. $cat->image_c;
-        unlink($file_path);
+            $file_path = public_path() . '/uploads/categories/' . $cat->image_c;
+            unlink($file_path);
 
             //upload new image
-             $newname = uniqid();// unique name
-             $image = $request->file('image');
-             $newname.=".".$image->getClientOriginalExtension();// JPG
-            $destinationPath = 'uploads';
-             $image->move($destinationPath, $newname);
+            $newname = uniqid(); // unique name
+            $image = $request->file('image');
+            $newname .= "." . $image->getClientOriginalExtension(); // JPG
+            $destinationPath = 'uploads/categories';
+            $image->move($destinationPath, $newname);
 
-        $cat->image_c = $newname;
-
-
+            $cat->image_c = $newname;
         }
-        if($cat->update()) {
+        if ($cat->update()) {
             return redirect()->back();
-           }else{
+        } else {
             echo "error";
-           }
-
+        }
     }
 }

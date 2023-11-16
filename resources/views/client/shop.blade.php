@@ -57,203 +57,204 @@
         <div class="section-padding">
             <div class="container">
 
-                @foreach (  $product as $p )
-
-                <div class="product-info row">
-                    <div class="col-lg-8 col-md-12 col-xs-12">
-                        <div class="ads-details-wrapper">
-                            <div class="item">
-                                <div class="product-img">
-                                    <img class="" src="{{ asset('uploads'.'/'.'produits') }}/{{ $p->image}}" alt="" width="250">
+                @foreach ($product as $p)
+                    <div class="product-info row">
+                        <div class="col-lg-8 col-md-12 col-xs-12">
+                            <div class="ads-details-wrapper">
+                                <div class="item">
+                                    <div class="product-img">
+                                        <img class="" src="{{ asset('uploads/products/') }}/{{ $p->image }}"
+                                            alt="" width="250">
+                                    </div>
+                                    <span class="price">{{ $p->price }}TND</span>
                                 </div>
-                                <span class="price">{{$p->price}}TND</span>
+                            </div>
+                            <div class="details-box">
+                                <div class="ads-details-info">
+                                    <h2>{{ $p->name }}</h2>
+                                    <p class="mb-8">{{ $p->description }}.</p>
+                                </div>
+                                <div class="tag-bottom">
+                                    <div class="float-left">
+                                        <ul class="advertisement">
+                                            <li>
+                                                <p><strong><i class="lni-folder"></i> Categories:</strong> <a
+                                                        href="#">{{ $p->category->libelle_c }}</a></p>
+                                            </li>
+                                            <li>
+                                                <p><strong><i class="lni-archive"></i> Condition:</strong> New</p>
+                                            </li>
+                                            <li>
+                                                <p><strong><i class="lni-package"></i> Brand:</strong> <a
+                                                        href="#">Apple</a></p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="float-right">
+                                        <div class="share">
+                                            <div class="social-link">
+                                                <a class="facebook" data-toggle="tooltip" data-placement="top"
+                                                    title="facebook" href="#"><i
+                                                        class="lni-facebook-filled"></i></a>
+                                                <a class="twitter" data-toggle="tooltip" data-placement="top"
+                                                    title="twitter" href="#"><i
+                                                        class="lni-twitter-filled"></i></a>
+                                                <a class="linkedin" data-toggle="tooltip" data-placement="top"
+                                                    title="linkedin" href="#"><i
+                                                        class="lni-linkedin-fill"></i></a>
+                                                <a class="google" data-toggle="tooltip" data-placement="top"
+                                                    title="google plus" href="#"><i
+                                                        class="lni-google-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="details-box">
-                            <div class="ads-details-info">
-                                <h2>{{$p->name}}</h2>
-                                <p class="mb-8">{{$p->description}}.</p>
-                            </div>
-                            <div class="tag-bottom">
-                                <div class="float-left">
-                                    <ul class="advertisement">
+                        <div class="col-lg-4 col-md-6 col-xs-12">
+
+                            <aside class="details-sidebar">
+                                <div class="widget">
+                                    <h4 class="widget-title">Ad Posted By</h4>
+                                    <div class="agent-inner">
+                                        <div class="agent-title">
+                                            <div class="agent-photo">
+                                                <a href="#"><img src="assets/img/productinfo/agent.jpg"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="agent-details">
+                                                <h3><a href="#">Tahmina Anny</a></h3>
+                                                <span><i class="lni-phone-handset"></i>(123) 123-456</span>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Your Email">
+                                        <input type="text" class="form-control" placeholder="Your Phone">
+                                        <p>I'm interested in this property [ID 123456] and I'd like to know more
+                                            details.
+                                        </p>
+                                        <button class="btn btn-common fullwidth mt-4">Send Message</button>
+                                    </div>
+                                </div>
+
+                                <div class="widget">
+                                    <h4 class="widget-title">More Ads From Seller</h4>
+                                    <ul class="posts-list">
                                         <li>
-                                            <p><strong><i class="lni-folder"></i> Categories:</strong> <a
-                                                    href="#">{{$p->category->libelle_c}}</a></p>
+                                            <div class="widget-thumb">
+                                                <a href="#"><img src="assets/img/details/img1.jpg"
+                                                        alt="" /></a>
+                                            </div>
+                                            <div class="widget-content">
+                                                <h4><a href="#">Little Harbor Yacht 38</a></h4>
+                                                <div class="meta-tag">
+                                                    <span>
+                                                        <a href="#"><i class="lni-user"></i> Smith</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-map-marker"></i> New Your</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-tag"></i> Radio</a>
+                                                    </span>
+                                                </div>
+                                                <h4 class="price">$480.00</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
                                         </li>
                                         <li>
-                                            <p><strong><i class="lni-archive"></i> Condition:</strong> New</p>
+                                            <div class="widget-thumb">
+                                                <a href="#"><img src="assets/img/details/img2.jpg"
+                                                        alt="" /></a>
+                                            </div>
+                                            <div class="widget-content">
+                                                <h4><a href="#">Little Harbor Yacht 38</a></h4>
+                                                <div class="meta-tag">
+                                                    <span>
+                                                        <a href="#"><i class="lni-user"></i> Smith</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-map-marker"></i> New Your</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-tag"></i> Radio</a>
+                                                    </span>
+                                                </div>
+                                                <h4 class="price">$480.00</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
                                         </li>
                                         <li>
-                                            <p><strong><i class="lni-package"></i> Brand:</strong> <a
-                                                    href="#">Apple</a></p>
+                                            <div class="widget-thumb">
+                                                <a href="#"><img src="assets/img/details/img3.jpg"
+                                                        alt="" /></a>
+                                            </div>
+                                            <div class="widget-content">
+                                                <h4><a href="#">Little Harbor Yacht 38</a></h4>
+                                                <div class="meta-tag">
+                                                    <span>
+                                                        <a href="#"><i class="lni-user"></i> Smith</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-map-marker"></i> New Your</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-tag"></i> Radio</a>
+                                                    </span>
+                                                </div>
+                                                <h4 class="price">$480.00</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                        <li>
+                                            <div class="widget-thumb">
+                                                <a href="#"><img src="assets/img/details/img4.jpg"
+                                                        alt="" /></a>
+                                            </div>
+                                            <div class="widget-content">
+                                                <h4><a href="#">Little Harbor Yacht 38</a></h4>
+                                                <div class="meta-tag">
+                                                    <span>
+                                                        <a href="#"><i class="lni-user"></i> Smith</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-map-marker"></i> New Your</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-tag"></i> Radio</a>
+                                                    </span>
+                                                </div>
+                                                <h4 class="price">$480.00</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                        <li>
+                                            <div class="widget-thumb">
+                                                <a href="#"><img src="assets/img/details/img5.jpg"
+                                                        alt="" /></a>
+                                            </div>
+                                            <div class="widget-content">
+                                                <h4><a href="#">Little Harbor Yacht 38</a></h4>
+                                                <div class="meta-tag">
+                                                    <span>
+                                                        <a href="#"><i class="lni-user"></i> Smith</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-map-marker"></i> New Your</a>
+                                                    </span>
+                                                    <span>
+                                                        <a href="#"><i class="lni-tag"></i> Radio</a>
+                                                    </span>
+                                                </div>
+                                                <h4 class="price">$480.00</h4>
+                                            </div>
+                                            <div class="clearfix"></div>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="float-right">
-                                    <div class="share">
-                                        <div class="social-link">
-                                            <a class="facebook" data-toggle="tooltip" data-placement="top"
-                                                title="facebook" href="#"><i
-                                                    class="lni-facebook-filled"></i></a>
-                                            <a class="twitter" data-toggle="tooltip" data-placement="top"
-                                                title="twitter" href="#"><i class="lni-twitter-filled"></i></a>
-                                            <a class="linkedin" data-toggle="tooltip" data-placement="top"
-                                                title="linkedin" href="#"><i class="lni-linkedin-fill"></i></a>
-                                            <a class="google" data-toggle="tooltip" data-placement="top"
-                                                title="google plus" href="#"><i
-                                                    class="lni-google-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </aside>
+
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-xs-12">
-
-                        <aside class="details-sidebar">
-                            <div class="widget">
-                                <h4 class="widget-title">Ad Posted By</h4>
-                                <div class="agent-inner">
-                                    <div class="agent-title">
-                                        <div class="agent-photo">
-                                            <a href="#"><img src="assets/img/productinfo/agent.jpg"
-                                                    alt=""></a>
-                                        </div>
-                                        <div class="agent-details">
-                                            <h3><a href="#">Tahmina Anny</a></h3>
-                                            <span><i class="lni-phone-handset"></i>(123) 123-456</span>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Your Email">
-                                    <input type="text" class="form-control" placeholder="Your Phone">
-                                    <p>I'm interested in this property [ID 123456] and I'd like to know more details.
-                                    </p>
-                                    <button class="btn btn-common fullwidth mt-4">Send Message</button>
-                                </div>
-                            </div>
-
-                            <div class="widget">
-                                <h4 class="widget-title">More Ads From Seller</h4>
-                                <ul class="posts-list">
-                                    <li>
-                                        <div class="widget-thumb">
-                                            <a href="#"><img src="assets/img/details/img1.jpg"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="widget-content">
-                                            <h4><a href="#">Little Harbor Yacht 38</a></h4>
-                                            <div class="meta-tag">
-                                                <span>
-                                                    <a href="#"><i class="lni-user"></i> Smith</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-tag"></i> Radio</a>
-                                                </span>
-                                            </div>
-                                            <h4 class="price">$480.00</h4>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="widget-thumb">
-                                            <a href="#"><img src="assets/img/details/img2.jpg"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="widget-content">
-                                            <h4><a href="#">Little Harbor Yacht 38</a></h4>
-                                            <div class="meta-tag">
-                                                <span>
-                                                    <a href="#"><i class="lni-user"></i> Smith</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-tag"></i> Radio</a>
-                                                </span>
-                                            </div>
-                                            <h4 class="price">$480.00</h4>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="widget-thumb">
-                                            <a href="#"><img src="assets/img/details/img3.jpg"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="widget-content">
-                                            <h4><a href="#">Little Harbor Yacht 38</a></h4>
-                                            <div class="meta-tag">
-                                                <span>
-                                                    <a href="#"><i class="lni-user"></i> Smith</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-tag"></i> Radio</a>
-                                                </span>
-                                            </div>
-                                            <h4 class="price">$480.00</h4>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="widget-thumb">
-                                            <a href="#"><img src="assets/img/details/img4.jpg"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="widget-content">
-                                            <h4><a href="#">Little Harbor Yacht 38</a></h4>
-                                            <div class="meta-tag">
-                                                <span>
-                                                    <a href="#"><i class="lni-user"></i> Smith</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-tag"></i> Radio</a>
-                                                </span>
-                                            </div>
-                                            <h4 class="price">$480.00</h4>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                    <li>
-                                        <div class="widget-thumb">
-                                            <a href="#"><img src="assets/img/details/img5.jpg"
-                                                    alt="" /></a>
-                                        </div>
-                                        <div class="widget-content">
-                                            <h4><a href="#">Little Harbor Yacht 38</a></h4>
-                                            <div class="meta-tag">
-                                                <span>
-                                                    <a href="#"><i class="lni-user"></i> Smith</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-                                                </span>
-                                                <span>
-                                                    <a href="#"><i class="lni-tag"></i> Radio</a>
-                                                </span>
-                                            </div>
-                                            <h4 class="price">$480.00</h4>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </aside>
-
-                    </div>
-                </div>
-
-
                 @endforeach
 
             </div>

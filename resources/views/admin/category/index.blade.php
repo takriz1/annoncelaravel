@@ -68,7 +68,7 @@
                           <th scope="row">{{ $c->id  }}</th>
                           <td>{{ $c->libelle_c }}</td>
                           <td>{{ $c->description_c }}</td>
-                          <td><img src="{{ asset('uploads') }}/{{ $c->image_c}}" width="100"></td>
+                          <td><img src="{{ asset('uploads/categories') }}/{{ $c->image_c}}" width="100"></td>
                           <td>
                             <a  h data-bs-toggle="modal"
                             data-bs-target="#editCategory{{ $c->id }}" class="btn btn-outline-info me-1 mb-1" type="button">Edit

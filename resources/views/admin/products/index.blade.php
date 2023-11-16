@@ -45,59 +45,58 @@
 
             <div class="content">
                 <div class="pb-5">
-                  <div class="row g-5">
-                    <h4 class="mt-4 mb-3">Products List</h4>
-                    <table class="table table-striped table-dark">
-                      <thead>
-                        <tr>
-                            <th scope="col">Category Name</th>
-                            <th scope="col">Client Name</th>
-                          <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Description</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Quantity</th>
-                          <th scope="col">Image</th>
-                          <th scope="col">Action</th>
+                    <div class="row g-5">
+                        <h4 class="mt-4 mb-3">Products List</h4>
+                        <table class="table table-striped table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Client Name</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Action</th>
 
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach ( $products as $index => $p )
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($products as $index => $p)
+                                    <tr>
+                                        <th scope="row">{{ $p->category->libelle_c }}</th>
+                                        <th scope="row"> {{ $p->user->name }}</th>
+                                        <th scope="row">{{ $p->id }}</th>
+                                        <td>{{ $p->name }}</td>
+                                        <td>{{ $p->description }}</td>
+                                        <td>{{ $p->price }} TND</td>
+                                        <td>{{ $p->qtt }}</td>
+                                        <td><img src="{{ asset('uploads/products') }}/{{ $p->image }}"
+                                                width="100"></td>
+                                        <td>
+                                            @if ($products->active)
+                                                <span class="badge bg-primary">Product Active</span>
+                                            @else
+                                                <span class="badge bg-warning">Product Disavtive</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($products->active)
+                                                <a href="/admin/product/{{ $p->id }}/disactive"
+                                                    class="btn btn-danger">Disactive</a>
+                                            @else
+                                                <a href="/admin/product/{{ $p->id }}/active"
+                                                    class="btn btn-success">Active</a>
+                                            @endif
+                                        </td>
 
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
-                        <tr>
-                            <th scope="row">{{ $p->category->libelle_c }}</th>
-                            <th scope="row"> {{ $p->user->name }}</th>
-                          <th scope="row">{{ $p->id  }}</th>
-                          <td>{{ $p->name }}</td>
-                          <td>{{ $p->description }}</td>
-                          <td>{{ $p->price }} TND</td>
-                          <td>{{ $p->qtt }}</td>
-                          <td><img src="{{ asset('uploads'.'/'.'produits') }}/{{ $p->image}}" width="100"></td>
-                          <td>
-                            @if($products->active)
-                            <span class="badge bg-primary">Product Active</span>
-                            @else
-                            <span class="badge bg-warning">Product Disavtive</span>
-
-                            @endif
-                        </td>
-                        <td>
-                            @if($products->active)
-                            <a href="/admin/product/{{$p->id}}/disactive" class="btn btn-danger">Disactive</a>
-                            @else
-                            <a href="/admin/product/{{$p->id}}/active" class="btn btn-success">Active</a>
-                            @endif
-                        </td>
-
-                        </tr>
-
-                        @endforeach
-                      </tbody>
-                    </table>
-
-                  </div>
+                    </div>
 
                 </div>
 
@@ -116,8 +115,8 @@
                         </div>
                     </div>
                 </footer>
-              </div>
             </div>
+        </div>
         </div>
 
     </main>
