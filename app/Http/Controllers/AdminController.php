@@ -14,17 +14,6 @@ class AdminController extends Controller
             $category = Category::all();
             return view('admin.dashboard')->with('products', $products)->with('category', $category);
         }
-        public function disactive($idprod){
-            $products = Product::find($idprod);
-            $products->active = false;
-            $products->update();
-            return redirect()->back()->with('success','Product Disactive');
-         }
-         public function active($idprod){
-            $products = Product::find($idprod);
-            $products->active = true;
-            $products->update();
-            return redirect()->back()->with('success','Product Active');
-         }
+
 
 }

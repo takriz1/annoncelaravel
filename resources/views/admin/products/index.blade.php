@@ -75,22 +75,18 @@
                                         <td><img src="{{ asset('uploads/products') }}/{{ $p->image }}"
                                                 width="100"></td>
                                         <td>
-                                            @if ($products->active)
-                                                <span class="badge bg-primary">Product Active</span>
-                                            @else
-                                                <span class="badge bg-warning">Product Disavtive</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($products->active)
-                                                <a href="/admin/product/{{ $p->id }}/disactive"
-                                                    class="btn btn-danger">Disactive</a>
-                                            @else
-                                                <a href="/admin/product/{{ $p->id }}/active"
-                                                    class="btn btn-success">Active</a>
-                                            @endif
-                                        </td>
+                                            @switch($p->state)
+                                                @case('InProgress')
+                                                    <a href="/admin/product/{{ $p->id }}/accepted"
+                                                        class="btn btn-success">Accepted</a>
+                                                    <a href="/admin/product/{{ $p->id }}/rejected"
+                                                        class="btn btn-danger">Rejected</a>
+                                                @break
 
+                                                @default
+                                                    <div class="alert  {{ $p->state == 'Accepted' ? 'alert-solid-success' : 'alert-solid-danger' }} "
+                                                        role="alert">{{ $p->state }}</div>
+                                            @endswitch
                                     </tr>
                                 @endforeach
                             </tbody>

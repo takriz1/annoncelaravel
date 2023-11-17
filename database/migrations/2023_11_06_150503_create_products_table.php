@@ -20,6 +20,9 @@ class CreateProductsTable extends Migration
             $table->float('price');
             $table->integer('qtt');
             $table->string('image');
+            $table->enum('state', ['InProgress', 'Accepted', 'Rejected'])->default('InProgress');
+            /*User Add Product => InProgress
+            Admin Accept or Reject the product */
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');

@@ -25,26 +25,25 @@ Auth::routes();
 
 // admin Routes
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard']);
+
+//CategoryController Routes
 Route::get('/admin/category', [App\Http\Controllers\CategoryController::class, 'list'])->middleware('auth', 'admin');
 Route::post('/admin/category/add', [App\Http\Controllers\CategoryController::class, 'add'])->middleware('auth', 'admin');
 Route::get('/admin/category/{id}/destroy', [App\Http\Controllers\CategoryController::class, 'destroy'])->middleware('auth', 'admin');
 Route::post('/admin/category/edit', [App\Http\Controllers\CategoryController::class, 'update'])->middleware('auth', 'admin');
+
+//ProductController Routes
 Route::get('/admin/product', [App\Http\Controllers\ProductController::class, 'ProductList'])->middleware('auth', 'admin');
-Route::get('/admin/product/{id}/disactive', [App\Http\Controllers\AdminController::class, 'disactive'])->middleware('auth', 'admin');
-Route::get('/admin/product/{id}/active', [App\Http\Controllers\AdminController::class, 'active'])->middleware('auth', 'admin');
-
-
-
-
-//TODO client Routes
-Route::get('/user/home', [App\Http\Controllers\ClientController::class, 'home'])->middleware('auth');
-Route::get('/user/account', [App\Http\Controllers\ProductController::class, 'dashboard'])->middleware('auth');
-Route::get('/user/post', [App\Http\Controllers\ProductController::class, 'idPost'])->middleware('auth');
+Route::get('/admin/product/{id}/rejected', [App\Http\Controllers\ProductController::class, 'rejected'])->middleware('auth', 'admin');
+Route::get('/admin/product/{id}/accepted', [App\Http\Controllers\ProductController::class, 'accepted'])->middleware('auth', 'admin');
 Route::get('/user/product/{id}/destroy', [App\Http\Controllers\ProductController::class, 'destroy'])->middleware('auth');
 Route::post('/user/product/edit', [App\Http\Controllers\ProductController::class, 'edit'])->middleware('auth');
+Route::get('/user/account', [App\Http\Controllers\ProductController::class, 'dashboard'])->middleware('auth');
+Route::get('/user/post', [App\Http\Controllers\ProductController::class, 'idPost'])->middleware('auth');
 Route::post('/product/search', [App\Http\Controllers\ProductController::class, 'search'])->middleware('auth');
 
 
 
 
-
+//TODO ClientController Routes
+Route::get('/user/home', [App\Http\Controllers\ClientController::class, 'home'])->middleware('auth');

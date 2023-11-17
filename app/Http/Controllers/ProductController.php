@@ -116,4 +116,19 @@ class ProductController extends Controller
         $category = Category::all();
         return view('client.shop')->with('category', $category)->with('product', $product);
     }
+
+    public function rejected($idprod)
+    {
+        $products = Product::find($idprod);
+        $products->state = 'Rejected';
+        $products->update();
+        return redirect()->back()->with('success', 'Product Rejected');
+    }
+    public function accepted($idprod)
+    {
+        $products = Product::find($idprod);
+        $products->state = 'Accepted';
+        $products->update();
+        return redirect()->back()->with('success', 'Product Accepted');
+    }
 }
