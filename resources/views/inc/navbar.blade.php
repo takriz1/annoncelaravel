@@ -15,8 +15,8 @@
         <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-center">
                 <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         Home
                     </a>
                     <div class="dropdown-menu">
@@ -30,8 +30,8 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         Listings
                     </a>
                     <div class="dropdown-menu">
@@ -41,15 +41,15 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         Pages
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="about.html">About Us</a>
                         <a class="dropdown-item" href="services.html">Services</a>
                         <a class="dropdown-item" href="ads-details.html">Ads Details</a>
-                        <a class="dropdown-item" href="'/user/post'">Ads Post</a>
+                        <a class="dropdown-item" href="/user/AddPost">Ads Post</a>
                         <a class="dropdown-item" href="pricing.html">Packages</a>
                         <a class="dropdown-item" href="testimonial.html">Testimonial</a>
                         <a class="dropdown-item" href="faq.html">FAQ</a>
@@ -57,8 +57,8 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         Blog
                     </a>
                     <div class="dropdown-menu">
@@ -74,7 +74,6 @@
                             MyAccount
                         </a>
                     </li>.
-
                 @endif
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">
@@ -83,7 +82,7 @@
                 </li>
             </ul>
             <div class="post-btn">
-                <a class="btn btn-common" href="/user/post"><i class="lni-pencil-alt"></i> Post an Ad</a>
+                <a class="btn btn-common" href="/user/post/getAddPostForm"><i class="lni-pencil-alt"></i> Post an Ad</a>
             </div>
         </div>
     </div>
@@ -173,129 +172,120 @@
 
 
 <section id="categories">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12 col-xs-12">
-            <div id="categories-icon-slider" class="categories-wrapper owl-carousel owl-theme">
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-1.png') }}"
-                                        alt="">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12 col-xs-12">
+                <div id="categories-icon-slider" class="categories-wrapper owl-carousel owl-theme">
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-1.png') }}" alt="">
+                                    </div>
+                                    <h4>Bicycle</h4>
                                 </div>
-                                <h4>Bicycle</h4>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-2.png') }}"
-                                        alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-2.png') }}" alt="">
+                                    </div>
+                                    <h4>Furniture</h4>
                                 </div>
-                                <h4>Furniture</h4>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-3.png') }}"
-                                        alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-3.png') }}" alt="">
+                                    </div>
+                                    <h4>Laptop</h4>
                                 </div>
-                                <h4>Laptop</h4>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-4.png') }}"
-                                        alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-4.png') }}" alt="">
+                                    </div>
+                                    <h4>Electronic</h4>
                                 </div>
-                                <h4>Electronic</h4>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-5.png') }}"
-                                        alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-5.png') }}" alt="">
+                                    </div>
+                                    <h4>Toys</h4>
                                 </div>
-                                <h4>Toys</h4>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-6.png') }}"
-                                        alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-6.png') }}" alt="">
+                                    </div>
+                                    <h4>Cloths</h4>
                                 </div>
-                                <h4>Cloths</h4>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-1.png') }}"
-                                        alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-1.png') }}" alt="">
+                                    </div>
+                                    <h4>Bicycle</h4>
                                 </div>
-                                <h4>Bicycle</h4>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-2.png') }}"
-                                        alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-2.png') }}" alt="">
+                                    </div>
+                                    <h4>Furniture</h4>
                                 </div>
-                                <h4>Furniture</h4>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="category.html">
-                        <div class="category-icon-item">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img src="{{ asset('mainassets/img/category/img-3.png') }}"
-                                        alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="category.html">
+                            <div class="category-icon-item">
+                                <div class="icon-box">
+                                    <div class="icon">
+                                        <img src="{{ asset('mainassets/img/category/img-3.png') }}" alt="">
+                                    </div>
+                                    <h4>Laptop</h4>
                                 </div>
-                                <h4>Laptop</h4>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </section>

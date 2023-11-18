@@ -16,39 +16,42 @@ class ProductController extends Controller
         $products = Product::all();
         return view('client.dashboard')->with('categories', $categories)->with('products', $products);
     }
-    public function idPost()
+    public function getAddPostForm()
     {
         $categories = Category::all();
         $products = Product::all();
-        return view('client.posts')->with('categories', $categories)->with('products', $products);
+        return view('client.addPostForm')->with('categories', $categories)->with('products', $products);
     }
     public function add(Request $request)
     {
+
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'qtt' => 'required',
             'image' => 'required',
+            'category' => 'required',
+            'userId' => 'required'
         ]);
 
-        $products = new Product();
-        $products->name = $request->name;
-        $products->category_id = $request->categorie;
-        $products->user_id = $request->userid;
-        $products->description = $request->description;
-        $products->price = $request->price;
-        $products->qtt = $request->qtt;
-
+        $product = new Product();
+        $product->name = $request->name;
+        $product->category_id = $request->category;
+        $product->user_id = $request->userId;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->qtt = $request->qtt;
 
         $newname = uniqid(); // unique name
         $image = $request->file('image');
         $newname .= "." . $image->getClientOriginalExtension(); // JPG
         $destinationPath =  'uploads/products';
         $image->move($destinationPath, $newname);
+        $product->image = $newname;
 
-        $products->image = $newname;
-        if ($products->save()) {
+        if ($product->save()) {
             return redirect()->back()->with('message', 'Thanks for Posting');
         } else {
             echo "error";

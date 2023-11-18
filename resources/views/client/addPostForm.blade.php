@@ -16,6 +16,8 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/color-switcher.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/summernote.css') }}">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/animate.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/owl.carousel.css') }}">
@@ -23,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/main.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('mainassets/css/responsive.css') }}">
+
 </head>
 
 <body>
@@ -39,7 +42,7 @@
 
         @include('inc.navbar')
 
-        <div class="page-header" style="background: url(assets/img/banner1.jpg);">
+        <div class="page-header" style="background: url('mainassets/img/banner1.jpg');">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -84,6 +87,12 @@
                                             <a href="account-profile-setting.html">
                                                 <i class="lni-cog"></i>
                                                 <span>Profile Settings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="active" href="/user/post/getAddPostForm">
+                                                <i class="lni-layers"></i>
+                                                <span>Add Post</span>
                                             </a>
                                         </li>
                                         <li>
@@ -139,12 +148,18 @@
                                 <form action="/user/post/add" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="inner-box">
+                                        @if (session()->has('message'))
+                                            <div class="alert alert-success">
+                                                {{ session()->get('message') }}
+                                            </div>
+                                        @endif
+
                                         <div class="dashboard-box">
                                             <h2 class="dashbord-title">Ad Detail</h2>
                                         </div>
                                         <div class="dashboard-wrapper">
                                             <div class="form-group mb-3">
-                                                <label class="control-label">Project Title</label>
+                                                <label class="control-label">Product Title</label>
                                                 <input class="form-control input-md" name="name" placeholder="Title"
                                                     type="text">
                                                 @error('name')
@@ -153,22 +168,28 @@
 
                                                     </div>
                                                 @enderror
-                                                <input type="hidden" name="userid" value="{{ Auth::user()->id }}">
+                                                <input type="hidden" name="userId" value="{{ Auth::user()->id }}">
                                             </div>
                                             <div class="form-group mb-3 tg-inputwithicon">
                                                 <label class="control-label">Categories</label>
                                                 <div class="tg-select form-control">
-                                                    <select name="categorie">
+                                                    <select name="category">
 
                                                         @foreach ($categories as $c)
                                                             <option value="{{ $c->id }}">{{ $c->libelle_c }}
                                                             </option>
                                                         @endforeach
                                                     </select>
+                                                    @error('category')
+                                                        <div class="alert alert-danger">
+                                                            {{ $message }}
+
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="form-group mb-3">
-                                                <label class="control-label">Price Title</label>
+                                                <label class="control-label">Product Price</label>
                                                 <input class="form-control input-md" name="price"
                                                     placeholder="Ad your Price" type="text">
                                                 @error('price')
@@ -178,16 +199,23 @@
                                                     </div>
                                                 @enderror
                                             </div>
+
                                             <div class="form-group mb-3">
+
                                                 <label class="control-label">Description </label>
-                                                <textarea name="description"></textarea>
+                                                <textarea name="description" class="note-codable"></textarea>
                                                 @error('description')
                                                     <div class="alert alert-danger">
                                                         {{ $message }}
 
                                                     </div>
                                                 @enderror
+
                                             </div>
+
+
+
+
                                             <div class="form-group mb-3">
                                                 <label class="control-label">Quantity</label>
                                                 <input class="form-control input-md" name="qtt"
@@ -209,19 +237,13 @@
                                                 @error('image')
                                                     <div class="alert alert-danger">
                                                         {{ $message }}
-
                                                     </div>
                                                 @enderror
                                             </label>
                                         </div>
                                         <div class="mb-3">
-                                        <button class="btn btn-common" type="submit" >Post Here</button>
-                                        @if (session()->has('message'))
-                                        <div class="alert alert-success">
-                                            {{ session()->get('message') }}
+                                            <button class="btn btn-common" type="submit">Post Here</button>
                                         </div>
-                                    @endif
-                                    </div>
                                     </div>
                                 </form>
                             </div>
@@ -383,7 +405,8 @@
         </div>
 
 
-        <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script data-cfasync="false"
+            src="{{ asset('mainassets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode-min.js') }}"></script>
         <script src="{{ asset('mainassets/js/jquery-min.js') }}"></script>
         <script src="{{ asset('mainassets/js/popper.min.js') }}"></script>
         <script src="{{ asset('mainassets/js/bootstrap.min.js') }}"></script>

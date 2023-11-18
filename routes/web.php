@@ -39,7 +39,8 @@ Route::get('/admin/product/{id}/accepted', [App\Http\Controllers\ProductControll
 Route::get('/user/product/{id}/destroy', [App\Http\Controllers\ProductController::class, 'destroy'])->middleware('auth');
 Route::post('/user/product/edit', [App\Http\Controllers\ProductController::class, 'edit'])->middleware('auth');
 Route::get('/user/account', [App\Http\Controllers\ProductController::class, 'dashboard'])->middleware('auth');
-Route::get('/user/post', [App\Http\Controllers\ProductController::class, 'idPost'])->middleware('auth');
+Route::get('/user/post/getAddPostForm', [App\Http\Controllers\ProductController::class, 'getAddPostForm'])->middleware('auth');
+Route::post('/user/post/add', [App\Http\Controllers\ProductController::class, 'add'])->middleware('auth');
 Route::post('/product/search', [App\Http\Controllers\ProductController::class, 'search'])->middleware('auth');
 
 
