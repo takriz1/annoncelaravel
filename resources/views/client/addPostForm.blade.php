@@ -203,7 +203,9 @@
                                             <div class="form-group mb-3">
 
                                                 <label class="control-label">Description </label>
-                                                <textarea name="description" class="note-codable"></textarea>
+                                                {{-- <textarea name="description" class="note-codable"></textarea> --}}
+                                                <textarea name="description" class="form-control" placeholder="Description" rows="7"
+                                                    data-error="Write your description" required=""></textarea>
                                                 @error('description')
                                                     <div class="alert alert-danger">
                                                         {{ $message }}
@@ -212,10 +214,6 @@
                                                 @enderror
 
                                             </div>
-
-
-
-
                                             <div class="form-group mb-3">
                                                 <label class="control-label">Quantity</label>
                                                 <input class="form-control input-md" name="qtt"
@@ -240,10 +238,11 @@
                                                     </div>
                                                 @enderror
                                             </label>
-                                        </div>
-                                        <div class="mb-3">
                                             <button class="btn btn-common" type="submit">Post Here</button>
                                         </div>
+                                        {{-- <div class="mb-3">
+
+                                        </div> --}}
                                     </div>
                                 </form>
                             </div>
@@ -260,46 +259,33 @@
                                                 <div class="tg-selectgroup">
                                                     <span class="tg-radio">
                                                         <input id="tg-sameuser" type="radio" name="usertype"
-                                                            value="same user" checked="">
+                                                            value="same user" checked="" disabled>
                                                         <label for="tg-sameuser">Same User</label>
                                                     </span>
                                                     <span class="tg-radio">
                                                         <input id="tg-someoneelse" type="radio" name="usertype"
-                                                            value="someone else">
+                                                            value="someone else" disabled>
                                                         <label for="tg-someoneelse">Someone Else</label>
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="form-group mb-3">
-                                                <label class="control-label">FirstName*</label>
-                                                <p>{{ Auth::user()->first_name }}</p>
+                                                <label class="control-label">FirstName :
+                                                    {{ Auth::user()->first_name }}</label>
                                             </div>
                                             <div class="form-group mb-3">
-                                                <label class="control-label">LastName*</label>
-                                                <p>{{ Auth::user()->last_name }}</p>
+                                                <label class="control-label">LastName :
+                                                    {{ Auth::user()->last_name }}</label>
+
                                             </div>
                                             <div class="form-group mb-3">
-                                                <label class="control-label">Phone*</label>
-                                                <p>{{ Auth::user()->telephone }}</p>
+                                                <label class="control-label">Phone :
+                                                    {{ Auth::user()->telephone }}</label>
                                             </div>
                                             <div class="form-group mb-3">
-                                                <label class="control-label">Mail*</label>
-                                                <p>{{ Auth::user()->email }}</p>
+                                                <label class="control-label">Mail : {{ Auth::user()->email }} </label>
+
                                             </div>
-
-
-
-
-                                            <div class="tg-checkbox">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="tg-agreetermsandrules">
-                                                    <label class="custom-control-label" for="tg-agreetermsandrules">I
-                                                        agree to all <a href="javascript:void(0);">Terms of Use &amp;
-                                                            Posting Rules</a></label>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-common" type="button">Post Ad</button>
                                         </div>
                                     </div>
                                 </div>
