@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\SampleMail;
 
 class ProductController extends Controller
 {
@@ -52,6 +55,21 @@ class ProductController extends Controller
         $product->image = $newname;
 
         if ($product->save()) {
+
+            #begin region sendMail
+            # wiki smtp server :  https://mailtrap.io/inboxes/2494280/messages
+            # wiki algo SendMail : https://www.codersvibe.com/how-to-send-email-in-laravel-8
+
+            $userFullName = Auth::user()->getFullNameAttribute(); //Auth::user()->first_name . ' ' . Auth::user()->last_name;
+            $details = [
+                'title' => 'Add a New Product : ' . $product->name,
+                'body' => 'A new product named : ' . $product->name . ' has been added by the user :' . $userFullName
+            ];
+
+            Mail::to('admin@admin.com')->send(new SampleMail($details));
+
+            #end region sendMail
+
             return redirect()->back()->with('message', 'Thanks for Posting');
         } else {
             echo "error";
