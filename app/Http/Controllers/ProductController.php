@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Mail;
-use App\Mail\SampleMail;
+use App\Mail\PostUpdatedMail;
 
 class ProductController extends Controller
 {
@@ -140,16 +140,68 @@ class ProductController extends Controller
 
     public function rejected($idprod)
     {
-        $products = Product::find($idprod);
-        $products->state = 'Rejected';
-        $products->update();
-        return redirect()->back()->with('success', 'Product Rejected');
+        $product = Product::with("user")->find($idprod);
+        $product->state = 'Rejected';
+        if ($product->update()) {
+            #begin region sendMail
+            # wiki smtp server :  https://mailtrap.io/inboxes/2494280/messages
+            # wiki algo SendMail : https://www.codersvibe.com/how-to-send-email-in-laravel-8
+
+            $details = [
+                'state' => 'Rejected',
+                'title' => 'Rjected Product : ' . $product->name,
+                'body' => 'The product named : ' . $product->name . ' has been rejected by the administrator '
+            ];
+
+            //  get the mail of Created Product
+            $userMail = $product->user->email;
+            Mail::to($userMail)->send(new PostUpdatedMail($details));
+
+            #end region sendMail
+
+            $notification=array(
+                'messege'=>'Product Rejected',
+                'alert-type'=>'success'
+                 );
+
+            return redirect()->back()->with($notification);
+        } else {
+            $notification=array(
+                'messege'=>'Error while rejecting Product!',
+                'alert-type'=>'error'
+                 );
+            return redirect()->back()->with($notification);
+        }
     }
     public function accepted($idprod)
     {
-        $products = Product::find($idprod);
-        $products->state = 'Accepted';
-        $products->update();
-        return redirect()->back()->with('success', 'Product Accepted');
+        $product = Product::with("user")->find($idprod);
+        $product->state = 'Accepted';
+        if ($product->update()) {
+            #begin region sendMail
+            # wiki smtp server :  https://mailtrap.io/inboxes/2494280/messages
+            # wiki algo SendMail : https://www.codersvibe.com/how-to-send-email-in-laravel-8
+
+            $details = [
+                'state' => 'Accepted',
+                'title' => 'Accepted Product : ' . $product->name,
+                'body' => 'The product named : ' . $product->name . ' has been accepted by the administrator '
+            ];
+
+            //  get the mail of Created Product
+            $userMail = $product->user->email;
+            Mail::to($userMail)->send(new PostUpdatedMail($details));
+
+            #end region sendMail
+
+            $notification = array(
+                'messege' => 'Product Accepted',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->back()->with($notification);
+        } else {
+            return redirect()->back()->with('error', 'Error while accepting Product ');
+        }
     }
 }

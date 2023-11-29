@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>annocneLaravel.com</title>
+    <title>annonceLaravel.com</title>
 </head>
 
 <body>

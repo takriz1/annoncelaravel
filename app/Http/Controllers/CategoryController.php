@@ -30,9 +30,9 @@ class CategoryController extends Controller
         //file upload
 
 
-        $newname = uniqid(); // unique name
-        $image = $request->file('image');
-        $newname .= "." . $image->getClientOriginalExtension(); // JPG
+        $newname = uniqid(); // unique name : 4567eazrfgsgfds
+        $image = $request->file('image');// mouhamed.jpg
+        $newname .= "." . $image->getClientOriginalExtension(); // 4567eazrfgsgfds.JPG
         $destinationPath = 'uploads/categories';
         $image->move($destinationPath, $newname);
 
