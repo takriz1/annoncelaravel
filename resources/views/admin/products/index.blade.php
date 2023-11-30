@@ -23,6 +23,10 @@
         rel="stylesheet">
     <link href="{{ asset('dashassets/css/phoenix.min.css') }}" rel="stylesheet" id="style-default">
     <link href="{{ asset('dashassets/css/user.min.css') }}" rel="stylesheet" id="user-style-default">
+    <!-- toastr Alert-->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 
     <style>
         body {
@@ -119,7 +123,53 @@
 
     <script src="{{ asset('dashassets/js/phoenix.js') }}"></script>
     <script src="{{ asset('dashassets/js/ecommerce-dashboard.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+
+
+
+    <script>
+        // Set the options that I want
+        toastr.options = {
+            "closeButton": true,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        @if (Session::has('messege'))
+        debugger
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            var message = "{{ Session::get('messege', 'info') }}"
+
+            console.log("type",type);
+            console.log("message",message);
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('messege') }}");
+                    break;
+                case 'success':
+                    toastr.success("{{ Session::get('messege') }}");
+                    break;
+                case 'warning':
+                    toastr.warning("{{ Session::get('messege') }}");
+                    break;
+                case 'error':
+                    toastr.error("{{ Session::get('messege') }}");
+                    break;
+            }
+        @endif
+    </script>
 </body>
 
 </html>
