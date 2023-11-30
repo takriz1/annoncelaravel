@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\PostUpdatedMail;
+use App\Mail\SampleMail;
 
 class ProductController extends Controller
 {
