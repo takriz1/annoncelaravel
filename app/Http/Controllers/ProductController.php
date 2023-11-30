@@ -70,9 +70,18 @@ class ProductController extends Controller
 
             #end region sendMail
 
-            return redirect()->back()->with('message', 'Thanks for Posting');
+            $notification = array(
+                'messege' => 'Thanks for Posting',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->back()->with($notification);
         } else {
-            echo "error";
+            $notification = array(
+                'messege' => 'Error while posting Product!',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
         }
     }
     public function ProductList()
@@ -126,9 +135,17 @@ class ProductController extends Controller
             $product->image = $newname;
         }
         if ($product->update()) {
-            return redirect()->back();
+            $notification = array(
+                'messege' => 'Editing product with Success',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
         } else {
-            echo "error";
+            $notification = array(
+                'messege' => 'Error while editing Product!',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
         }
     }
     public function search(Request $request)
@@ -159,17 +176,17 @@ class ProductController extends Controller
 
             #end region sendMail
 
-            $notification=array(
-                'messege'=>'Product Rejected',
-                'alert-type'=>'success'
-                 );
+            $notification = array(
+                'messege' => 'Product Rejected',
+                'alert-type' => 'success'
+            );
 
             return redirect()->back()->with($notification);
         } else {
-            $notification=array(
-                'messege'=>'Error while rejecting Product!',
-                'alert-type'=>'error'
-                 );
+            $notification = array(
+                'messege' => 'Error while rejecting Product!',
+                'alert-type' => 'error'
+            );
             return redirect()->back()->with($notification);
         }
     }
