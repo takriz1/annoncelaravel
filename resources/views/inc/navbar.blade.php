@@ -9,64 +9,21 @@
                 <span class="lni-menu"></span>
                 <span class="lni-menu"></span>
             </button>
-            <a href="index-2.html" class="navbar-brand"><img src="{{ asset('mainassets/img/logo.png') }}"
+            <a href="/user/home" class="navbar-brand"><img src="{{ asset('mainassets/img/logo.png') }}"
                     alt=""></a>
         </div>
         <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-center">
                 <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                    <a class="nav-link dropdown-toggle" href="/user/home" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         Home
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item active" href="index-2.html">Home 1</a>
-                        <a class="dropdown-item" href="index-3.html">Home 2</a>
-                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="category.html">
+                    <a class="nav-link" href="/user/home/categories">
                         Categories
                     </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        Listings
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="adlistinggrid.html">Ad Grid</a>
-                        <a class="dropdown-item" href="adlistinglist.html">Ad Listing</a>
-                        <a class="dropdown-item" href="ads-details.html">Listing Detail</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        Pages
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="about.html">About Us</a>
-                        <a class="dropdown-item" href="services.html">Services</a>
-                        <a class="dropdown-item" href="ads-details.html">Ads Details</a>
-                        <a class="dropdown-item" href="/user/AddPost">Ads Post</a>
-                        <a class="dropdown-item" href="pricing.html">Packages</a>
-                        <a class="dropdown-item" href="testimonial.html">Testimonial</a>
-                        <a class="dropdown-item" href="faq.html">FAQ</a>
-                        <a class="dropdown-item" href="404.html">404</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        Blog
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="blog.html">Blog - Right Sidebar</a>
-                        <a class="dropdown-item" href="blog-left-sidebar.html">Blog - Left Sidebar</a>
-                        <a class="dropdown-item" href="blog-grid-full-width.html"> Blog full width </a>
-                        <a class="dropdown-item" href="single-post.html">Blog Details</a>
-                    </div>
                 </li>
                 @if (Auth::check())
                     <li class="nav-item">
@@ -76,7 +33,7 @@
                     </li>.
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">
+                    <a class="nav-link" href="/contact">
                         Contact
                     </a>
                 </li>
@@ -87,55 +44,6 @@
         </div>
     </div>
 
-    <ul class="mobile-menu">
-        <li>
-            <a class="active" href="#">
-                Home
-            </a>
-            <ul class="dropdown">
-                <li><a class="active" href="index-2.html">Home 1</a></li>
-                <li><a href="index-3.html">Home 2</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="category.html">Categories</a>
-        </li>
-        <li>
-            <a href="#">
-                Listings
-            </a>
-            <ul class="dropdown">
-                <li><a href="adlistinggrid.html">Ad Grid</a></li>
-                <li><a href="adlistinglist.html">Ad Listing</a></li>
-                <li><a href="ads-details.html">Listing Detail</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Pages</a>
-            <ul class="dropdown">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="ads-details.html">Ads Details</a></li>
-                <li><a href="post-ads.html">Ads Post</a></li>
-                <li><a href="pricing.html">Packages</a></li>
-                <li><a href="testimonial.html">Testimonial</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="404.html">404</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Blog</a>
-            <ul class="dropdown">
-                <li><a href="blog.html">Blog - Right Sidebar</a></li>
-                <li><a href="blog-left-sidebar.html">Blog - Left Sidebar</a></li>
-                <li><a href="blog-grid-full-width.html"> Blog full width </a></li>
-                <li><a href="single-post.html">Blog Details</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="contact.html">Contact Us</a>
-        </li>
-    </ul>
 
 </nav>
 
@@ -176,116 +84,32 @@
         <div class="row justify-content-center">
             <div class="col-lg-10 col-md-12 col-xs-12">
                 <div id="categories-icon-slider" class="categories-wrapper owl-carousel owl-theme">
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-1.png') }}" alt="">
+                    @foreach ($categories as $cat)
+                        <div class="item">
+                            <a href="category.html">
+                                <div class="category-icon-item">
+                                    <div class="icon-box">
+                                        <div class="icon">
+                                            <img src="{{ asset('uploads' . '/categories') }}/{{ $cat->image_c }}" alt="">
+                                        </div>
+                                        <h4>{{$cat->libelle_c}}</h4>
                                     </div>
-                                    <h4>Bicycle</h4>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-2.png') }}" alt="">
-                                    </div>
-                                    <h4>Furniture</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-3.png') }}" alt="">
-                                    </div>
-                                    <h4>Laptop</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-4.png') }}" alt="">
-                                    </div>
-                                    <h4>Electronic</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-5.png') }}" alt="">
-                                    </div>
-                                    <h4>Toys</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-6.png') }}" alt="">
-                                    </div>
-                                    <h4>Cloths</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-1.png') }}" alt="">
-                                    </div>
-                                    <h4>Bicycle</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-2.png') }}" alt="">
-                                    </div>
-                                    <h4>Furniture</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="category.html">
-                            <div class="category-icon-item">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('mainassets/img/category/img-3.png') }}" alt="">
-                                    </div>
-                                    <h4>Laptop</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 </section>
+<script>
+    // var a = document.querySelectorAll(".navbar-nav li a");
+    // for (var i = 0, length = a.length; i < length; i++) {
+    //     a[i].onclick = function() {
+    //         var b = document.querySelector(".navbar-nav li.active");
+    //         if (b) b.classList.remove("active");
+    //         this.parentNode.classList.add('active');
+    //     };
+    // }
+</script>

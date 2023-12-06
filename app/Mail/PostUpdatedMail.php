@@ -12,7 +12,7 @@ class PostUpdatedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $details;
+    public $classdetails;
     /**
      * Create a new message instance.
      *
@@ -20,7 +20,7 @@ class PostUpdatedMail extends Mailable
      */
     public function __construct($details)
     {
-        $this->details = $details;
+        $this->classdetails = $details;
     }
 
     /**
@@ -30,10 +30,10 @@ class PostUpdatedMail extends Mailable
      */
     public function build()
     {
-        if (isset($this->details["state"]) && $this->details["state"] == 'Rejected') {
+        if (isset($this->classdetails["state"]) && $this->classdetails["state"] == 'Rejected') {
             return $this->subject('Rejected of Product')
                 ->view('mails.mailProductUpdated');
-        } else if (isset($this->details["state"]) && $this->details["state"] == 'Accepted') {
+        } else if (isset($this->classdetails["state"]) && $this->classdetails["state"] == 'Accepted') {
             return $this->subject('Accepted of Product')
                 ->view('mails.mailProductUpdated');
         } else {

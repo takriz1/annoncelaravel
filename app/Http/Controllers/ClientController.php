@@ -17,11 +17,15 @@ class ClientController extends Controller
 
     //
 
-    public function home(){
-        $category = Category::all();
-        $product = Product::all();
-        return view('home')->with('category',$category)->with('product',$product);
-    }
+    // public function home()
+    // {
+    //     $categories = Category::all();
+    //     $products = Product::all();
+    //     return view('home')->with('categories', $categories)->with('products', $products);
+    // }
+
+
+
 
 
 

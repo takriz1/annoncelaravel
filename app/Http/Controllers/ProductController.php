@@ -219,7 +219,13 @@ class ProductController extends Controller
 
             return redirect()->back()->with($notification);
         } else {
-            return redirect()->back()->with('error', 'Error while accepting Product ');
+            //todo $notification
+
+            $notification = array(
+                'messege' => 'Error while accepting Product',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
         }
     }
 }

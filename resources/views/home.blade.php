@@ -37,14 +37,14 @@
 
         {{-- Include nav bar --}}
 
-        @include('inc.navbar')
+        @include('inc.navbar',$categories)
 
 
         <section class="featured section-padding">
             <div class="container">
                 <h1 class="section-title">Latest Products</h1>
                 <div class="row">
-                    @foreach ($product as $p)
+                    @foreach ($products as $p)
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
                             <div class="featured-box">
                                 <figure>

@@ -36,6 +36,38 @@ class CategorySeeder extends Seeder
                     'image_c' => 'img-2.png',
 
 
+                ],
+                [
+
+                    'libelle_c' => 'Laptop',
+                    'description_c' => 'Laptop',
+                    'image_c' => 'img-3.png',
+
+
+                ],
+                [
+
+                    'libelle_c' => 'Electronic',
+                    'description_c' => 'Electronic',
+                    'image_c' => 'img-4.png',
+
+
+                ],
+                [
+
+                    'libelle_c' => 'Toys',
+                    'description_c' => 'Toys',
+                    'image_c' => 'img-5.png',
+
+
+                ],
+                [
+
+                    'libelle_c' => 'Cloths',
+                    'description_c' => 'Cloths',
+                    'image_c' => 'img-6.png',
+
+
                 ]
             ]
 

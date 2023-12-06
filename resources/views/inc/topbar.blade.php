@@ -5,9 +5,6 @@
 
                 <ul class="list-inline">
                     <li><i class="lni-phone"></i> +0123 456 789</li>
-                    <li><i class="lni-envelope"></i> <a href="http://preview.uideck.com/cdn-cgi/l/email-protection"
-                            class="__cf_email__"
-                            data-cfemail="fb888e8b8b94898fbb9c969a9297d5989496">[email&#160;protected]</a></li>
                 </ul>
 
             </div>
