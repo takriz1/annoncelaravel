@@ -74,8 +74,7 @@ class HomeController extends Controller
 
     public function getAllProducts()
     {
-
-        $products = Product::all()->where('state', '=', 'Accepted');
+        $products = Product::where('state', '=', 'Accepted')->paginate(3);
         return view('partials.partialProducts')->with('products', $products);
     }
 }

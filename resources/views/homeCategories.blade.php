@@ -275,6 +275,20 @@
             });
 
         });
+
+        //pagination event
+        $(document).on('click', '.custom-pagination a', function(e) {
+            e.preventDefault();
+            alert('page click ')
+            var url = $(this).attr('href');
+
+            $.ajax({
+                url: url,
+                success: function(data) {
+                    $('#partialProductView').html(data);
+                },
+            });
+        });
     </script>
 
 </body>

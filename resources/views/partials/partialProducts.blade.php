@@ -21,8 +21,7 @@
             <a class="nav-link" data-toggle="tab" href="#grid-view"><i class="lni-grid"></i></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#list-view"><i
-                    class="lni-list"></i></a>
+            <a class="nav-link active" data-toggle="tab" href="#list-view"><i class="lni-list"></i></a>
         </li>
     </ul>
 </div>
@@ -62,8 +61,7 @@
                                 <p class="dsc">{{ $p->description }}.</p>
                                 <div class="listing-bottom">
                                     <h3 class="price float-left">{{ $p->price }} TND</h3>
-                                    <a href="ads-details.html"
-                                        class="btn btn-common float-right">View
+                                    <a href="ads-details.html" class="btn btn-common float-right">View
                                         Details</a>
                                 </div>
                             </div>
@@ -77,8 +75,34 @@
     </div>
 </div>
 
+{{-- <ul class="custom-pagination">
+    @foreach ($products->links()->elements[0] as $link)
+        @if (is_string($link))
+            <li class="disabled">{{ $link }}</li>
+        @else
+            <li @if ($link['active']) class="active" @endif>
+                <a href="{{ $link['url'] }}">{{ $link['label'] }}</a>
+            </li>
+        @endif
+    @endforeach
+</ul> --}}
 
-<div class="pagination-bar">
+{!! $products->links('partials.partialproductsPagination') !!}
+
+{{-- <ul class="custom-pagination">
+    @foreach ($products->appends($_GET)->links()->elements[0] as $link)
+        @if (is_string($link))
+            <li class="disabled">{{ $link }}</li>
+        @else
+            <li @if ($link['active']) class="active" @endif>
+                <a href="{{ $link['url'] }}">{{ $link['label'] }}</a>
+            </li>
+        @endif
+    @endforeach
+</ul> --}}
+
+{{-- TODO : template sylte to applic --}}
+{{-- <div class="pagination-bar">
     <nav>
         <ul class="pagination justify-content-center">
             <li class="page-item"><a class="page-link active" href="#">1</a></li>
@@ -87,4 +111,18 @@
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
     </nav>
-</div>
+</div> --}}
+
+
+{{-- <div class="pagination-bar">
+    <nav>
+        <ul class="pagination justify-content-center custom-pagination">
+            @foreach ($products->links()->elements[0] as $link)
+                <li @if ($link['active']) class="page-item active" @endif>
+                    <a href="{{ $link['url'] }}" class="page-link">{{ $link['label'] }}</a>
+                </li>
+            @endforeach
+
+        </ul>
+    </nav>
+</div> --}}
