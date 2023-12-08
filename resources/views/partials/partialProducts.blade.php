@@ -75,54 +75,7 @@
     </div>
 </div>
 
-{{-- <ul class="custom-pagination">
-    @foreach ($products->links()->elements[0] as $link)
-        @if (is_string($link))
-            <li class="disabled">{{ $link }}</li>
-        @else
-            <li @if ($link['active']) class="active" @endif>
-                <a href="{{ $link['url'] }}">{{ $link['label'] }}</a>
-            </li>
-        @endif
-    @endforeach
-</ul> --}}
-
 {!! $products->links('partials.partialproductsPagination') !!}
 
-{{-- <ul class="custom-pagination">
-    @foreach ($products->appends($_GET)->links()->elements[0] as $link)
-        @if (is_string($link))
-            <li class="disabled">{{ $link }}</li>
-        @else
-            <li @if ($link['active']) class="active" @endif>
-                <a href="{{ $link['url'] }}">{{ $link['label'] }}</a>
-            </li>
-        @endif
-    @endforeach
-</ul> --}}
-
-{{-- TODO : template sylte to applic --}}
-{{-- <div class="pagination-bar">
-    <nav>
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
-</div> --}}
 
 
-{{-- <div class="pagination-bar">
-    <nav>
-        <ul class="pagination justify-content-center custom-pagination">
-            @foreach ($products->links()->elements[0] as $link)
-                <li @if ($link['active']) class="page-item active" @endif>
-                    <a href="{{ $link['url'] }}" class="page-link">{{ $link['label'] }}</a>
-                </li>
-            @endforeach
-
-        </ul>
-    </nav>
-</div> --}}

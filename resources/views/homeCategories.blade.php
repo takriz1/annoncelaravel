@@ -53,7 +53,7 @@
                     <aside>
 
                         <div class="widget_search">
-                            <form role="search" id="search-form" action="homeCategories/product/search" method="POST">
+                            <form role="search" id="search-form" action="homeCategories/product/search" method="GET">
                                 @csrf
                                 <input type="text" class="form-control" autocomplete="off" name="searchingWord"
                                     placeholder="Search..." id="search-input" value="">
@@ -77,9 +77,6 @@
                                         </a>
                                     </li>
                                 @endforeach
-
-
-
                             </ul>
                         </div>
 
@@ -218,11 +215,12 @@
     <script>
         $(document).ready(function() {
 
-            //first loading => get all products
-            //homeCategories/products
+
+
+            //loading page
             $.ajax({
                 type: "GET",
-                url: '{{ route('products.show') }}',
+                url: '{{ route('products.search.show') }}',
                 success: function(data) {
                     $('#partialProductView').html(data);
                 },
@@ -231,7 +229,9 @@
                     console.log(data);
                 },
             });
-            //Submit Search Form Event
+
+
+            //Submit Search Form Event NEW
             var frm = $('#search-form');
 
             frm.submit(function(e) {
@@ -259,7 +259,7 @@
             // ul change event
             $("#categoriesddl").on("click", "li.searchCategory", function(event) {
                 var catUrl = $(this).attr("url");
-                $('li').removeClass();
+                $('li').removeClass('active');
                 $(this).addClass('active');
                 $.ajax({
                     type: "GET",
@@ -274,20 +274,24 @@
                 });
             });
 
-        });
 
-        //pagination event
-        $(document).on('click', '.custom-pagination a', function(e) {
-            e.preventDefault();
-            alert('page click ')
-            var url = $(this).attr('href');
 
-            $.ajax({
-                url: url,
-                success: function(data) {
-                    $('#partialProductView').html(data);
-                },
+            //pagination event
+            $(document).on('click', '.custom-pagination a', function(e) {
+                e.preventDefault();
+
+                //get url and make final url for ajax
+                var url = $(this).attr("href");
+                var append = url.indexOf("?") == -1 ? "?" : "&";
+                var finalURL = url + append + $("#search-form").serialize();
+                $.ajax({
+                    url: finalURL,
+                    success: function(data) {
+                        $('#partialProductView').html(data);
+                    },
+                });
             });
+
         });
     </script>
 

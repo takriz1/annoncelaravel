@@ -22,14 +22,20 @@ Auth::routes();
 /* Home Page */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/categories', [App\Http\Controllers\HomeController::class, 'homeCategories']);
+
 Route::get('/contact', [App\Http\Controllers\ClientController::class, 'contact']);
 Route::post('/product/search', [App\Http\Controllers\ProductController::class, 'search']);
-Route::post('homeCategories/product/search', [App\Http\Controllers\HomeController::class, 'searchProducts']);
+
+/*home categories page */
+Route::get('/categories', [App\Http\Controllers\HomeController::class, 'homeCategories']);
+
+Route::get('homeCategories/product/search', [App\Http\Controllers\HomeController::class, 'searchProducts'])
+->name('products.search.show');
+
 Route::get('homeCategories/productsByCategory/{id}', [App\Http\Controllers\HomeController::class, 'productsByCategory'])
     ->name('products.by.category.show');
-Route::get('homeCategories/products', [App\Http\Controllers\HomeController::class, 'getAllProducts'])
-    ->name('products.show');
+
+
 
 
 // admin Routes
