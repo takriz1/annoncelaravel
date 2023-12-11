@@ -20,17 +20,17 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 /* Home Page */
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{idCategory?}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home/{idCategory?}', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Route::get('/contact', [App\Http\Controllers\ClientController::class, 'contact']);
-Route::post('/product/search', [App\Http\Controllers\ProductController::class, 'search']);
+Route::post('home/product/search', [App\Http\Controllers\HomeController::class, 'search']);
 
 /*home categories page */
 Route::get('/categories', [App\Http\Controllers\HomeController::class, 'homeCategories']);
 
 Route::get('homeCategories/product/search', [App\Http\Controllers\HomeController::class, 'searchProducts'])
-->name('products.search.show');
+    ->name('products.search.show');
 
 Route::get('homeCategories/productsByCategory/{id}', [App\Http\Controllers\HomeController::class, 'productsByCategory'])
     ->name('products.by.category.show');
@@ -53,8 +53,6 @@ Route::get('/admin/product/{id}/rejected', [App\Http\Controllers\ProductControll
 Route::get('/admin/product/{id}/accepted', [App\Http\Controllers\ProductController::class, 'accepted'])->middleware('auth', 'admin');
 Route::get('/user/product/{id}/destroy', [App\Http\Controllers\ProductController::class, 'destroy'])->middleware('auth');
 Route::post('/user/product/edit', [App\Http\Controllers\ProductController::class, 'edit'])->middleware('auth');
-Route::get('/user/account', [App\Http\Controllers\ProductController::class, 'dashboard'])->middleware('auth');
-Route::get('/user/post/getAddPostForm', [App\Http\Controllers\ProductController::class, 'getAddPostForm'])->middleware('auth');
 Route::post('/user/post/add', [App\Http\Controllers\ProductController::class, 'add'])->middleware('auth');
 
 
@@ -63,3 +61,6 @@ Route::post('/user/post/add', [App\Http\Controllers\ProductController::class, 'a
 
 //TODO ClientController Routes
 //Route::get('/user/home', [App\Http\Controllers\ClientController::class, 'home'])->middleware('auth');
+
+Route::get('/user/post/getAddPostForm', [App\Http\Controllers\ClientController::class, 'getAddPostForm'])->middleware('auth');
+Route::get('/user/account', [App\Http\Controllers\ClientController::class, 'dashboard'])->middleware('auth');

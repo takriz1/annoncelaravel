@@ -16,7 +16,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //  $this->middleware('auth');
     }
 
     /**
@@ -24,10 +23,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    // Begin Region Home
+    public function index($idCategory = null)
     {
-        $categories = Category::all();
-        $products = Product::all()->where('state', '=', 'Accepted');
         /* if (Auth::user()) {
 
             if (Auth::user()->role == "admin") {
@@ -40,10 +39,28 @@ class HomeController extends Controller
         } else {
             return view('home')->with('category', $category)->with('product', $product);
         }*/
+        $categories = Category::all();
+        if ($idCategory > 0)
+            $products = Product::all()->where('state', '=', 'Accepted')
+                ->where('category_id', '=', $idCategory);
+        else
+            $products = Product::all()->where('state', '=', 'Accepted');
 
         return view('home')->with('categories', $categories)->with('products', $products);
     }
+    public function search(Request $request)
+    {
 
+        $categories = Category::all();
+        $acceptedProducts = Product::where('state', '=', 'Accepted');
+        $searchingProducts = $acceptedProducts->where('name', 'LIKE', '%' . $request->searchingWord . '%')
+            ->orWhere('description', 'LIKE', '%' . $request->searchingWord . '%')->get();
+        return view('home')->with('categories', $categories)->with('products', $searchingProducts);
+    }
+
+    // end Region Home
+
+    //begin region Home Categories
     public function homeCategories()
     {
         $categories = Category::all();
@@ -69,6 +86,7 @@ class HomeController extends Controller
             ->where('category_id', '=', $id)->paginate(3);
         return view('partials.partialProducts')->with('products', $products);
     }
+    // end region home Categories
 
     public function contact()
     {

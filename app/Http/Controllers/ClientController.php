@@ -10,23 +10,27 @@ use Illuminate\Http\Request;
 class ClientController extends Controller
 {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
-    //
 
-    // public function home()
-    // {
-    //     $categories = Category::all();
-    //     $products = Product::all();
-    //     return view('home')->with('categories', $categories)->with('products', $products);
-    // }
-
-
-
-
-
-
+    public function dashboard()
+    {
+        $categories = Category::all();
+        $products = Product::all();
+        return view('client.dashboard')->with('categories', $categories)->with('products', $products);
+    }
+    public function getAddPostForm()
+    {
+        $categories = Category::all();
+        $products = Product::all();
+        return view('client.addPostForm')->with('categories', $categories)->with('products', $products);
+    }
 }

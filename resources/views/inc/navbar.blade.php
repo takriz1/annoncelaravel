@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/home/categories">
+                    <a class="nav-link" href="/categories">
                         Categories
                     </a>
                 </li>
@@ -37,10 +37,13 @@
                         Contact
                     </a>
                 </li>
-            </ul>
-            <div class="post-btn">
-                <a class="btn btn-common" href="/user/post/getAddPostForm"><i class="lni-pencil-alt"></i> Post an Ad</a>
-            </div>
+            </ul>-
+            @if (Auth::check())
+                <div class="post-btn">
+                    <a class="btn btn-common" href="/user/post/getAddPostForm"><i class="lni-pencil-alt"></i> Post an
+                        Ad</a>
+                </div>
+            @endif
         </div>
     </div>
 
@@ -59,10 +62,10 @@
                         property, jobs and more</p>
                     <div class="search-bar">
                         <div class="search-inner">
-                            <form class="search-form" action="/product/search" method="POST">
+                            <form class="search-form" action="/home/product/search" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" name="customword" class="form-control"
+                                    <input type="text" name="searchingWord" class="form-control"
                                         placeholder="What are you looking for?">
                                 </div>
                                 <button class="btn btn-common" type="submit"><i class="lni-search"></i>
@@ -86,13 +89,14 @@
                 <div id="categories-icon-slider" class="categories-wrapper owl-carousel owl-theme">
                     @foreach ($categories as $cat)
                         <div class="item">
-                            <a href="category.html">
+                            <a href="{{ route('home', $cat->id) }}">
                                 <div class="category-icon-item">
                                     <div class="icon-box">
                                         <div class="icon">
-                                            <img src="{{ asset('uploads' . '/categories') }}/{{ $cat->image_c }}" alt="">
+                                            <img src="{{ asset('uploads' . '/categories') }}/{{ $cat->image_c }}"
+                                                alt="">
                                         </div>
-                                        <h4>{{$cat->libelle_c}}</h4>
+                                        <h4>{{ $cat->libelle_c }}</h4>
                                     </div>
                                 </div>
                             </a>

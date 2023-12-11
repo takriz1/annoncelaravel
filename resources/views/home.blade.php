@@ -37,7 +37,7 @@
 
         {{-- Include nav bar --}}
 
-        @include('inc.navbar',$categories)
+        @include('inc.navbar', $categories)
 
 
         <section class="featured section-padding">
@@ -52,12 +52,13 @@
                                         <span class="bg-green"><i class="lni-heart"></i></span>
                                         <span><i class="lni-bookmark"></i></span>
                                     </div>
-                                    <a href="#"><img src="{{ asset('uploads' . '/products') }}/{{ $p->image }}"
+                                    <a href="#"><img
+                                            src="{{ asset('uploads' . '/products') }}/{{ $p->image }}"
                                             alt="" width="300"></a>
                                 </figure>
                                 <div class="feature-content">
                                     <div class="product">
-                                        <a href="#">Electronic > </a>
+                                        <a href="#"> {{ $p->category->libelle_c }} </a>
                                     </div>
                                     <h4><a href="ads-details.html">{{ $p->name }}</a></h4>
                                     <div class="meta-tag">

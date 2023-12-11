@@ -13,23 +13,18 @@ use App\Mail\SampleMail;
 
 class ProductController extends Controller
 {
-    //
-    public function dashboard()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $categories = Category::all();
-        $products = Product::all();
-        return view('client.dashboard')->with('categories', $categories)->with('products', $products);
+        $this->middleware('auth');
     }
-    public function getAddPostForm()
-    {
-        $categories = Category::all();
-        $products = Product::all();
-        return view('client.addPostForm')->with('categories', $categories)->with('products', $products);
-    }
+
     public function add(Request $request)
     {
-
-
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -149,12 +144,7 @@ class ProductController extends Controller
             return redirect()->back()->with($notification);
         }
     }
-    public function search(Request $request)
-    {
-        $product = Product::where('name', 'LIKE', '%' . $request->customword . '%')->get();
-        $category = Category::all();
-        return view('client.shop')->with('category', $category)->with('product', $product);
-    }
+
 
     public function rejected($idprod)
     {
