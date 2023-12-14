@@ -9,11 +9,18 @@ class Category extends Model
 {
     use HasFactory;
 
-  /*  public function users(){
+    /*  public function users(){
 
         return $this->belongsTo(User::class, 'user_id', 'id' );
     } */
-    public function products(){
-        return $this->hasMany(Product::class , 'category_id', 'id' );
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id');
+    }
+
+    public function getAccpetedProductsCount()
+    {
+        $result = $this->products()->where('state', '=', 'Accepted')->count();
+        return $result;
     }
 }

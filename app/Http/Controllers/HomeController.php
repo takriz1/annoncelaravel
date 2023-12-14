@@ -41,7 +41,7 @@ class HomeController extends Controller
             return view('home')->with('category', $category)->with('product', $product);
         }
     }
-   /* public function category(){
+    /* public function category(){
         $categories = Category::all();
 
         return view('category', compact('categories'));
@@ -63,21 +63,29 @@ class HomeController extends Controller
         $products = Product::paginate(2); // Change the value as needed
         return view('PaginationProduct', compact('products'));
     } */
-    public function category()
+    public function categories()
     {
         $categories = Category::all();
         $products = Product::paginate(2);
 
-        return view('category', compact('products', 'categories'));
+        return view('homecategories', compact('products', 'categories'));
     }
-
+    //  url: '/get-products-by-category?page=' + page + '&idcategory=' + pIdCaregory,
     public function getProductsByCategory(Request $request)
     {
         $categoryId = $request->input('category_id');
+        dd($categoryId);
         $products = Product::where('category_id', $categoryId)->paginate(2);
 
         return view('categoriesProducts', compact('products'));
     }
 
 
+    public function productsByCategory($id)
+    {
+
+        $products = Product::where('state', '=', 'Accepted')
+            ->where('category_id', '=', $id)->paginate(2);
+        return view('categoriesProducts', compact('products'));
+    }
 }

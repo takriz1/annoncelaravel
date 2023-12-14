@@ -16,7 +16,7 @@
             </figure>
             <div class="feature-content">
                 <div class="product">
-                    <a href="#">{{$category->libelle_c}}</a>
+                    <a href="#">{{$product->category->libelle_c}}</a>
                 </div>
                 <h4><a href="ads-details.html">{{ $product->name }}</a></h4>
                 <div class="meta-tag">

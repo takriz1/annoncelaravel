@@ -1,0 +1,7 @@
+/* Add your styling for the 'active' class here */
+.searchCategory.active {
+    background-color: #ee0d0d7c !important;
+    /* Change this to your desired background color */
+    color: #141111 !important;
+    /* Change this to your desired text color */
+}
