@@ -64,3 +64,10 @@ Route::post('/user/post/add', [App\Http\Controllers\ProductController::class, 'a
 
 Route::get('/user/post/getAddPostForm', [App\Http\Controllers\ClientController::class, 'getAddPostForm'])->middleware('auth');
 Route::get('/user/account', [App\Http\Controllers\ClientController::class, 'dashboard'])->middleware('auth');
+Route::get('/user/posts', [App\Http\Controllers\ClientController::class, 'getClientPostsPartialView'])
+    ->name('user.posts');
+Route::get('/user/post/{id}/details', [App\Http\Controllers\ClientController::class, 'postDetails'])->middleware('auth');
+
+Route::get('/user/post/{id}/edit/show', [App\Http\Controllers\ClientController::class, 'editPostShow'])->middleware('auth');
+
+Route::post('/user/post/edit', [App\Http\Controllers\ClientController::class, 'editPostSubmit'])->middleware('auth');
