@@ -19,7 +19,7 @@ class ClientController extends Controller
 
     public function home(){
         $category = Category::all();
-        $product = Product::all();
+        $product = Product::where('state', 'Accepted')->get();
         return view('home')->with('category',$category)->with('product',$product);
     }
 

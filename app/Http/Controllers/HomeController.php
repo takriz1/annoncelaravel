@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $category = Category::all();
-        $product = Product::all();
+        $product = Product::where('state', 'Accepted')->get();
         if (Auth::user()) {
 
             if (Auth::user()->role == "admin") {
@@ -41,4 +41,43 @@ class HomeController extends Controller
             return view('home')->with('category', $category)->with('product', $product);
         }
     }
+   /* public function category(){
+        $categories = Category::all();
+
+        return view('category', compact('categories'));
+    }
+    public function getProducts($categoryId)
+    {
+    if($categoryId == 99){
+            $category = Category::with('products')->get();
+
+        }else{
+            $category = Category::with('products')->find($categoryId);
+        }
+        return view('categoriesProducts', compact('category'));
+        $category = Category::with('products')->find($categoryId);
+        return view('categoriesProducts', compact('category'));
+    }
+    public function Products(Request $request)
+    {
+        $products = Product::paginate(2); // Change the value as needed
+        return view('PaginationProduct', compact('products'));
+    } */
+    public function category()
+    {
+        $categories = Category::all();
+        $products = Product::paginate(2);
+
+        return view('category', compact('products', 'categories'));
+    }
+
+    public function getProductsByCategory(Request $request)
+    {
+        $categoryId = $request->input('category_id');
+        $products = Product::where('category_id', $categoryId)->paginate(2);
+
+        return view('categoriesProducts', compact('products'));
+    }
+
+
 }

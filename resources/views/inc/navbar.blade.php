@@ -9,37 +9,23 @@
                 <span class="lni-menu"></span>
                 <span class="lni-menu"></span>
             </button>
-            <a href="index-2.html" class="navbar-brand"><img src="{{ asset('mainassets/img/logo.png') }}"
+            <a href="/user/home" class="navbar-brand"><img src="{{ asset('mainassets/img/logo.png') }}"
                     alt=""></a>
         </div>
         <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-center">
-                <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/user/home">
                         Home
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item active" href="index-2.html">Home 1</a>
-                        <a class="dropdown-item" href="index-3.html">Home 2</a>
-                    </div>
+
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="category.html">
+                    <a class="nav-link" href="/category">
                         Categories
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
-                        Listings
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="adlistinggrid.html">Ad Grid</a>
-                        <a class="dropdown-item" href="adlistinglist.html">Ad Listing</a>
-                        <a class="dropdown-item" href="ads-details.html">Listing Detail</a>
-                    </div>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -50,23 +36,14 @@
                         <a class="dropdown-item" href="services.html">Services</a>
                         <a class="dropdown-item" href="ads-details.html">Ads Details</a>
                         <a class="dropdown-item" href="/user/AddPost">Ads Post</a>
-                        <a class="dropdown-item" href="pricing.html">Packages</a>
-                        <a class="dropdown-item" href="testimonial.html">Testimonial</a>
-                        <a class="dropdown-item" href="faq.html">FAQ</a>
-                        <a class="dropdown-item" href="404.html">404</a>
+
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
+                    <a class="nav-link " href="#">
                         Blog
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="blog.html">Blog - Right Sidebar</a>
-                        <a class="dropdown-item" href="blog-left-sidebar.html">Blog - Left Sidebar</a>
-                        <a class="dropdown-item" href="blog-grid-full-width.html"> Blog full width </a>
-                        <a class="dropdown-item" href="single-post.html">Blog Details</a>
-                    </div>
+
                 </li>
                 @if (Auth::check())
                     <li class="nav-item">

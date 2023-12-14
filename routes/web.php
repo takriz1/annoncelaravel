@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,15 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 /* Home Page */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/*Route::get('/user/category', [App\Http\Controllers\HomeController::class, 'category']);
+Route::get('/categories/{categoryId}/products', [App\Http\Controllers\HomeController::class, 'getProducts']);
+Route::get('/get-products', [HomeController::class, 'Products']); */
+Route::get('/category', [App\Http\Controllers\HomeController::class, 'category']);
+Route::get('/get-products-by-category', [HomeController::class, 'getProductsByCategory']);
+
+
+
+
 /**test */
 
 Auth::routes();

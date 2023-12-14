@@ -204,4 +204,5 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'Error while accepting Product ');
         }
     }
+
 }
