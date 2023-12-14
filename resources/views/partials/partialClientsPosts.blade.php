@@ -16,12 +16,7 @@
                 <table class="table table-responsive dashboardtable tablemyads">
                     <thead>
                         <tr>
-                            <th>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkedall">
-                                    <label class="custom-control-label" for="checkedall"></label>
-                                </div>
-                            </th>
+
                             <th>Photo</th>
                             <th>Title</th>
                             <th>Category</th>
@@ -34,12 +29,7 @@
                     <tbody>
                         @foreach ($products as $index => $p)
                             <tr data-category="active">
-                                <td>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="adone">
-                                        <label class="custom-control-label" for="adone"></label>
-                                    </div>
-                                </td>
+
                                 <td class="photo"><img class="img-fluid"
                                         src="{{ asset('uploads/products/') }}/{{ $p->image }}" alt=""></td>
                                 <td data-title="Title">

@@ -69,50 +69,21 @@
                                     </div>
                                 </div>
                                 <nav class="navdashboard">
-                                    <ul>
-                                        <li>
-                                            <a href="dashboard.html">
+                                    <ul id="navclientdashboard">
+                                        <li url="{{ route('user.partial.view.show', 'dashord') }}">
+                                            <a class="active" href="dashboard.html">
                                                 <i class="lni-dashboard"></i>
                                                 <span>Dashboard</span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <li url="{{ route('user.partial.view.show', 'profile') }}">
                                             <a href="account-profile-setting.html">
                                                 <i class="lni-cog"></i>
                                                 <span>Profile Settings</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a class="active" href="account-myads.html">
-                                                <i class="lni-layers"></i>
-                                                <span>My Ads</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="offermessages.html">
-                                                <i class="lni-envelope"></i>
-                                                <span>Offers/Messages</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="payments.html">
-                                                <i class="lni-wallet"></i>
-                                                <span>Payments</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="account-favourite-ads.html">
-                                                <i class="lni-heart"></i>
-                                                <span>My Favourites</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="privacy-setting.html">
-                                                <i class="lni-star"></i>
-                                                <span>Privacy Settings</span>
-                                            </a>
-                                        </li>
-                                        <li>
+
+                                        <li value="logout" url="{{ route('user.partial.view.show', 'logout') }}">
                                             <a href="#">
                                                 <i class="lni-enter"></i>
                                                 <span>Logout</span>
@@ -271,7 +242,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Image Existed : </label>
                                     <div class="col-sm-12">
-                                        <img class="img-fluid"
+                                        <img class="img-fluid" id="postImageDisplay"
                                             src="http://127.0.0.1:8000/uploads/products/MOMABIKES.jpg" alt="">
                                     </div>
                                 </div>
@@ -367,6 +338,7 @@
                         $('#postPrice').val(data.product.price);
                         $('#postQuantity').val(data.product.qtt);
                         $('#postHiddenImage').val(data.product.image);
+                        $('#postImageDisplay').attr('src', data.product.image); // TO UPDATE UPDATE AJAX FUNCTION TO SEND  PRODUCT MODAL WITH IMAGE PATH
 
 
                         $('#editPost').modal('show');
@@ -436,6 +408,25 @@
                     let fileInputElement = document.getElementById('postHiddenImage');
                     fileInputElement.files = event.target.files;
                 });
+
+
+                $("#navclientdashboard").on("click", "li", function(event) {
+                    var urlSelected = $(this).attr("url");
+                    $('li.a').removeClass('active');
+                    $(this).addClass('active');
+                    $.ajax({
+                        type: "GET",
+                        url: urlSelected,
+                        success: function(data) {
+                            $('#clientPostsPartialView').html(data);
+                        },
+                        error: function(data) {
+                            console.log('An error occurred.');
+                            console.log(data);
+                        },
+                    });
+                });
+
 
             });
         </script>
