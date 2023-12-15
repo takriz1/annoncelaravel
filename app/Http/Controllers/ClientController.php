@@ -53,6 +53,7 @@ class ClientController extends Controller
     public function editPostShow($idProduct)
     {
         $product = Product::with("user")->find($idProduct);
+        $product->fullPathImage = $product->getImageFullPath();
         return response()->json([
             'product' => $product
         ]);

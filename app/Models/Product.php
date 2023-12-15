@@ -27,6 +27,13 @@ class Product extends Model
 
 
     use HasFactory;
+    public function getImageFullPath()
+    {
+        //'uploads/products'
+        return url('/uploads/products/' . $this->image);
+    }
+
+
     public function category()
     {
 
@@ -37,6 +44,4 @@ class Product extends Model
 
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
-
 }
