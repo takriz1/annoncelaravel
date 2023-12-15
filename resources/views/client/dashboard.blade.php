@@ -55,6 +55,8 @@
         <div id="content" class="section-padding">
             <div class="container">
                 <div class="row">
+
+
                     <div class="col-sm-12 col-md-4 col-lg-3 page-sidebar">
                         <aside>
                             <div class="sidebar-box">
@@ -69,54 +71,35 @@
                                     </div>
                                 </div>
                                 <nav class="navdashboard">
-                                    <ul>
-                                        <li>
-                                            <a href="dashboard.html">
+                                    <ul id="clientDashbordNav">
+                                        <li class="clientDashSideBar"
+                                            url="{{ route('user.partial.view.show', 'dashbord') }}">
+                                            <a class="active" href="#">
                                                 <i class="lni-dashboard"></i>
                                                 <span>Dashboard</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="account-profile-setting.html">
+                                        <li class="clientDashSideBar"
+                                            url="{{ route('user.partial.view.show', 'profile') }}">
+                                            <a href="#">
                                                 <i class="lni-cog"></i>
                                                 <span>Profile Settings</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="active" href="account-myads.html">
-                                                <i class="lni-layers"></i>
-                                                <span>My Ads</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="offermessages.html">
-                                                <i class="lni-envelope"></i>
-                                                <span>Offers/Messages</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="payments.html">
-                                                <i class="lni-wallet"></i>
-                                                <span>Payments</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="account-favourite-ads.html">
-                                                <i class="lni-heart"></i>
-                                                <span>My Favourites</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="privacy-setting.html">
-                                                <i class="lni-star"></i>
-                                                <span>Privacy Settings</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{-- {{ __('Logout') }} --}}
                                                 <i class="lni-enter"></i>
                                                 <span>Logout</span>
+
                                             </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
                                         </li>
                                     </ul>
                                 </nav>
@@ -133,7 +116,7 @@
 
                     {{-- Posts Partial View --}}
 
-                    <div class="col-sm-12 col-md-8 col-lg-9" id="clientPostsPartialView"></div>
+                    <div class="col-sm-12 col-md-8 col-lg-9" id="clientDashboardPartialView"></div>
 
 
                 </div>
@@ -335,7 +318,7 @@
                     type: "GET",
                     url: '{{ route('user.posts') }}',
                     success: function(data) {
-                        $('#clientPostsPartialView').html(data);
+                        $('#clientDashboardPartialView').html(data);
                     },
                     error: function(data) {
                         console.log('An error occurred.');
@@ -436,6 +419,27 @@
                     let fileInputElement = document.getElementById('postHiddenImage');
                     fileInputElement.files = event.target.files;
                 });
+
+
+
+                $("#clientDashbordNav").on("click", "li.clientDashSideBar", function(event) {
+                    $('li').find('a').removeClass('active');
+                    $(this).find('a').addClass('active');
+                    var urlToCall = $(this).attr("url");
+                    console.log("urlToCall", urlToCall);
+                    $.ajax({
+                        type: "GET",
+                        url: urlToCall,
+                        success: function(data) {
+                            $('#clientDashboardPartialView').html(data);
+                        },
+                        error: function(data) {
+                            console.log('An error occurred.');
+                            console.log(data);
+                        },
+                    });
+                });
+
 
             });
         </script>

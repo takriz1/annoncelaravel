@@ -62,19 +62,6 @@ class ClientController extends Controller
 
     public function editPostSubmit(Request $request)
     {
-        /*  $request->validate([
-            'name' => 'required',
-            'desc' => 'required',
-            'price' => 'required',
-            'qtt' => 'required',
-            'image' => 'required',
-        ]);*/
-        /* $('#postId').val(data.product.id);
-                        $('#postName').val(data.product.name);
-                        $('#postDescription').val(data.product.description);
-                        $('#postPrice').val(data.product.price);
-                        $('#postQuantity').val(data.product.qtt);
-                        $('#postHiddenImage').val(data.product.image); */
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'description' => 'required',
@@ -116,6 +103,21 @@ class ClientController extends Controller
         } else {
             //return response()->json(['errors' => 'Problem when saving post']);
             return response()->json(['code' => 0, 'msg' => 'Something went wrong', 'errors' => null]);
+        }
+    }
+
+    public function getPartialView($partialName)
+    {
+
+        switch ($partialName) {
+            case "dashbord":
+                $categories = Category::all();
+                $products = Product::all();
+                return view('partials.partialClientsPosts')->with('categories', $categories)->with('products', $products);;
+            case "profile":
+                return view('partials.partialClientProfile');
+            default:
+                return   response()->json('Partial View NotFound');
         }
     }
 }

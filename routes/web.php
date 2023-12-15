@@ -71,3 +71,6 @@ Route::get('/user/post/{id}/details', [App\Http\Controllers\ClientController::cl
 Route::get('/user/post/{id}/edit/show', [App\Http\Controllers\ClientController::class, 'editPostShow'])->middleware('auth');
 
 Route::post('/user/post/edit', [App\Http\Controllers\ClientController::class, 'editPostSubmit'])->middleware('auth');
+
+Route::get('/user/partialView/{partialName}', [App\Http\Controllers\ClientController::class, 'getPartialView'])
+    ->name('user.partial.view.show')->middleware('auth');
