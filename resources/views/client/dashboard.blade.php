@@ -254,7 +254,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Image Existed : </label>
                                     <div class="col-sm-12">
-                                        <img class="img-fluid"
+                                        <img class="img-fluid" id="postImageDisplay"
                                             src="http://127.0.0.1:8000/uploads/products/MOMABIKES.jpg" alt="">
                                     </div>
                                 </div>
@@ -350,6 +350,7 @@
                         $('#postPrice').val(data.product.price);
                         $('#postQuantity').val(data.product.qtt);
                         $('#postHiddenImage').val(data.product.image);
+                        $('#postImageDisplay').attr('src', data.product.image); // TO UPDATE UPDATE AJAX FUNCTION TO SEND  PRODUCT MODAL WITH IMAGE PATH
 
 
                         $('#editPost').modal('show');
