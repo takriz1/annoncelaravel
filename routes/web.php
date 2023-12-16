@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 /* Home Page */
-Route::get('/{idCategory?}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home/{idCategory?}', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Route::get('/contact', [App\Http\Controllers\ClientController::class, 'contact']);

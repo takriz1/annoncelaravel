@@ -215,8 +215,6 @@
     <script>
         $(document).ready(function() {
 
-
-
             //loading page
             $.ajax({
                 type: "GET",
