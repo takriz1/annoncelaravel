@@ -254,8 +254,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Image Existed : </label>
                                     <div class="col-sm-12">
-                                        <img class="img-fluid" id="postImageDisplay"
-                                            src="" alt="">
+                                        <img class="img-fluid" id="postImageDisplay" src="" alt="">
                                     </div>
                                 </div>
 
@@ -344,6 +343,7 @@
 
                     $.get('/user/post/' + idPost + '/edit/show', function(data) {
 
+
                         console.log("data", data);
                         $('#postId').val(data.product.id);
                         $('#postName').val(data.product.name);
@@ -352,7 +352,9 @@
                         $('#postQuantity').val(data.product.qtt);
                         $('#postHiddenImage').val(data.product.image);
                         $('#postImageDisplay').attr('src', data.product
-                        .fullPathImage); // TO UPDATE UPDATE AJAX FUNCTION TO SEND  PRODUCT MODAL WITH IMAGE PATH
+                            .image_full_path
+                            ); // TO UPDATE UPDATE AJAX FUNCTION TO SEND  PRODUCT MODAL WITH IMAGE PATH
+
 
 
 

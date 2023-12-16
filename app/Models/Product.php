@@ -24,10 +24,12 @@ class Product extends Model
         'user_id',
     ];
 
-
+    protected $appends = [
+        'image_full_path'
+    ];
 
     use HasFactory;
-    public function getImageFullPath()
+    public function getImageFullPathAttribute()
     {
         //'uploads/products'
         return url('/uploads/products/' . $this->image);

@@ -56,7 +56,7 @@ class ProductController extends Controller
             # wiki smtp server :  https://mailtrap.io/inboxes/2494280/messages
             # wiki algo SendMail : https://www.codersvibe.com/how-to-send-email-in-laravel-8
 
-            $userFullName = Auth::user()->getFullNameAttribute(); //Auth::user()->first_name . ' ' . Auth::user()->last_name;
+            $userFullName = Auth::user()->full_name; //Auth::user()->first_name . ' ' . Auth::user()->last_name;
             $details = [
                 'title' => 'Add a New Product : ' . $product->name,
                 'body' => 'A new product named : ' . $product->name . ' has been added by the user :' . $userFullName
