@@ -14,19 +14,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes();
+
 /* Home Page */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 /* Home Page */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-/*Route::get('/user/category', [App\Http\Controllers\HomeController::class, 'category']);
-Route::get('/categories/{categoryId}/products', [App\Http\Controllers\HomeController::class, 'getProducts']);
-Route::get('/get-products', [HomeController::class, 'Products']); */
-Route::get('/categories', [App\Http\Controllers\HomeController::class, 'categories']);
-Route::get('/category', [App\Http\Controllers\HomeController::class, 'listcategory']);
-Route::get('/category/prodList', [App\Http\Controllers\HomeController::class, 'cat']);
-Route::get('/get-products-by-category', [HomeController::class, 'getProductsByCategory']);
+
+/*home categories page */
+Route::get('/categories', [App\Http\Controllers\HomeController::class, 'homeCategories']);
+
+
 
 Route::get('homeCategories/productsByCategory/{id}', [App\Http\Controllers\HomeController::class, 'productsByCategory'])
     ->name('products.by.category.show');
@@ -35,9 +36,9 @@ Route::get('homeCategories/productsByCategory/{id}', [App\Http\Controllers\HomeC
 Route::get('homeCategories/product/search', [App\Http\Controllers\HomeController::class, 'searchProducts'])
     ->name('products.search.show');
 
-/**test */
 
-Auth::routes();
+
+
 
 // admin Routes
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard']);

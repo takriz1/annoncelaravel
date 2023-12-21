@@ -41,86 +41,29 @@ class HomeController extends Controller
             return view('home')->with('category', $category)->with('product', $product);
         }
     }
-    /* public function category(){
-        $categories = Category::all();
-
-        return view('category', compact('categories'));
-    }
-    public function getProducts($categoryId)
-    {
-    if($categoryId == 99){
-            $category = Category::with('products')->get();
-
-        }else{
-            $category = Category::with('products')->find($categoryId);
-        }
-        return view('categoriesProducts', compact('category'));
-        $category = Category::with('products')->find($categoryId);
-        return view('categoriesProducts', compact('category'));
-    }
-    public function Products(Request $request)
-    {
-        $products = Product::paginate(2); // Change the value as needed
-        return view('PaginationProduct', compact('products'));
-    } */
-    public function categories()
+    public function homeCategories()
     {
         $categories = Category::all();
-        $products = Product::paginate(2);
-
-        return view('homecategories', compact('products', 'categories'));
+        $products = Product::where('state', '=', 'Accepted');
+        return view('homeCategories')->with('categories', $categories)->with('products', $products);
     }
 
-    public function listcategory(){
-        $categories = Category::all();
-        $products = Product::paginate(2);
-        return view('ListCategory', compact('products', 'categories'));
-    }
-    public function cat(Request $request)
-{
-    $query = Product::query();
-
-
-    // Apply search filter
-    if ($request->has('search')) {
-        $query->where('name', 'like', '%' . $request->input('search') . '%');
-    }
-
-    // Paginate the results
-    $items = $query->paginate(2); // Adjust the number as needed
-
-    if ($request->ajax()) {
-        return response()->json(view('items', compact('items'))->render());
-    }
-
-    return view('homecat', compact('items'));
-}
-    //  url: '/get-products-by-category?page=' + page + '&idcategory=' + pIdCaregory,
-    public function getProductsByCategory(Request $request)
-    {
-        $categoryId = $request->input('category_id');
-        $products = Product::where('category_id', $categoryId)->paginate(2);
-
-        return view('categoriesProducts', compact('products'));
-    }
-
-
-    public function productsByCategory($id)
-    {
-
-        $products = Product::where('state', '=', 'Accepted')
-            ->where('category_id', '=', $id)->paginate(2);
-        return view('categoriesProducts', compact('products'));
-    }
 
     public function searchProducts(Request $request)
     {
         $acceptedProducts = Product::where('state', '=', 'Accepted');
         $searchingProducts = $acceptedProducts->where('name', 'LIKE', '%' . $request->searchingWord . '%')
-            ->orWhere('description', 'LIKE', '%' . $request->searchingWord . '%')->paginate(2);
+            ->orWhere('description', 'LIKE', '%' . $request->searchingWord . '%')->paginate(3);
 
 
-        return view('categoriesProducts')->with('products', $searchingProducts);
+        return view('partials.partialProducts')->with('products', $searchingProducts);
     }
 
+    public function productsByCategory($id)
+    {
+
+        $products = Product::where('state', '=', 'Accepted')
+            ->where('category_id', '=', $id)->paginate(3);
+        return view('partials.partialProducts')->with('products', $products);
+    }
 }
