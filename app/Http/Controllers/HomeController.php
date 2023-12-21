@@ -112,4 +112,15 @@ class HomeController extends Controller
             ->where('category_id', '=', $id)->paginate(2);
         return view('categoriesProducts', compact('products'));
     }
+
+    public function searchProducts(Request $request)
+    {
+        $acceptedProducts = Product::where('state', '=', 'Accepted');
+        $searchingProducts = $acceptedProducts->where('name', 'LIKE', '%' . $request->searchingWord . '%')
+            ->orWhere('description', 'LIKE', '%' . $request->searchingWord . '%')->paginate(2);
+
+
+        return view('categoriesProducts')->with('products', $searchingProducts);
+    }
+
 }

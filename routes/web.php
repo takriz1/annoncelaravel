@@ -32,6 +32,9 @@ Route::get('homeCategories/productsByCategory/{id}', [App\Http\Controllers\HomeC
     ->name('products.by.category.show');
 
 
+Route::get('homeCategories/product/search', [App\Http\Controllers\HomeController::class, 'searchProducts'])
+    ->name('products.search.show');
+
 /**test */
 
 Auth::routes();

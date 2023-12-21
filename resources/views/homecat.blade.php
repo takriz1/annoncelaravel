@@ -48,10 +48,11 @@
                     <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
                         <aside>
                             <div class="widget_search">
-                                <form id="search-form" role="search" action="{{ url('/category/prodList') }}" method="get">
+                                <form id="search-form" role="search" action="homeCategories/product/search"
+                                    method="GET">
                                     @csrf
-                                    <input type="text" class="form-control" autocomplete="off" name="search"
-                                    value="{{ request('search') }}" placeholder="Search...">
+                                    <input type="text" class="form-control" autocomplete="off" name="searchingWord"
+                                        value="" placeholder="Search...">
                                     <button type="submit" id="search-submit" class="search-btn"><i
                                             class="lni-search"></i></button>
                                 </form>
@@ -71,14 +72,12 @@
                                 <h4 class="widget-title">All Categories</h4>
                                 <ul class="categories-list" id="categoriesddl">
 
-                                        <li class="searchCategory" value=""
-                                           >
-                                            <a href="#">
-                                                <i class="lni-dinner"></i>
-                                                 <span
-                                                    class="category-counter"></span>
-                                            </a>
-                                        </li>
+                                    <li class="searchCategory" value="">
+                                        <a href="#">
+                                            <i class="lni-dinner"></i>
+                                            <span class="category-counter"></span>
+                                        </a>
+                                    </li>
 
                                 </ul>
                             </div>
@@ -126,9 +125,7 @@
                             <div class="tab-content">
                                 <div id="list-view" class="tab-pane fade active show">
                                     <div id="productContainer"></div>
-                                    <div id="items-container">
-                                        @include('catproducts')
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -238,6 +235,26 @@
         </div>
 
 
+
+
+        <script data-cfasync="false"
+            src="{{ asset('mainassets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/jquery-min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/color-switcher.js') }}"></script>
+        <script src="{{ asset('mainassets/js/jquery.counterup.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/waypoints.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/wow.js') }}"></script>
+        <script src="{{ asset('mainassets/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/jquery.slicknav.js') }}"></script>
+        <script src="{{ asset('mainassets/js/main.js') }}"></script>
+        <script src="{{ asset('mainassets/js/form-validator.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/contact-form-script.min.js') }}"></script>
+        <script src="{{ asset('mainassets/js/summernote.js') }}"></script>
+        <!-- Add this inside the head tag of your layout file -->
+        {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
+
         <!--- Category List Ajax -->
 
         <!--  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -301,23 +318,6 @@
             });
         </script> -->
 
-        <script data-cfasync="false"
-            src="{{ asset('mainassets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/jquery-min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/popper.min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/color-switcher.js') }}"></script>
-        <script src="{{ asset('mainassets/js/jquery.counterup.min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/waypoints.min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/wow.js') }}"></script>
-        <script src="{{ asset('mainassets/js/owl.carousel.min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/jquery.slicknav.js') }}"></script>
-        <script src="{{ asset('mainassets/js/main.js') }}"></script>
-        <script src="{{ asset('mainassets/js/form-validator.min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/contact-form-script.min.js') }}"></script>
-        <script src="{{ asset('mainassets/js/summernote.js') }}"></script>
-
-
         <!-- Category List + Products Pagination Ajax
         <script>
             $(document).ready(function() {
@@ -371,31 +371,53 @@
             });
         </script> -->
 
-<!-- Add this inside the head tag of your layout file -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-         <!--- Pagination ajax with Search Filter -->
-         <script>
-            $(document).ready(function () {
+
+        <!--- Pagination ajax with Search Filter -->
+        <script>
+            $(document).ready(function() {
                 // Function to handle the form submission
-                $('form').on('submit', function (e) {
-                    e.preventDefault();
-                    let formData = $(this).serialize();
+                /*  $('form').on('submit', function (e) {
+                      e.preventDefault();
+                      let formData = $(this).serialize();
 
-                    // Ajax request to the controller
+                      // Ajax request to the controller
+                      $.ajax({
+                          url: '{{ url('/category/prodList') }}',
+                          type: 'GET',
+                          data: formData,
+                          success: function (data) {
+                              // Update the content with the returned HTML
+                              $('#items-container').html(data);
+                          }
+                      });
+                  });*/
+
+                //Submit Search Form Event NEW
+                var frm = $('#search-form');
+                frm.submit(function(e) {
+                    e.preventDefault();
                     $.ajax({
-                        url: '{{ url('/category/prodList') }}',
-                        type: 'GET',
-                        data: formData,
-                        success: function (data) {
-                            // Update the content with the returned HTML
-                            $('#items-container').html(data);
-                        }
+                        type: frm.attr('method'),
+                        url: frm.attr('action'),
+                        data: frm.serialize(),
+                        success: function(data) {
+                            console.log('Submission was successful.');
+                            console.log(data);
+
+                           // $('#partialProductView').html(data);
+
+                           $('#productContainer').html(data);
+                        },
+                        error: function(data) {
+                            console.log('An error occurred.');
+                            console.log(data);
+                        },
                     });
                 });
 
                 // Function to handle pagination links
-                $(document).on('click', '.pagination a', function (e) {
+                $(document).on('click', '.pagination a', function(e) {
                     e.preventDefault();
                     let page = $(this).attr('href').split('page=')[1];
 
@@ -403,9 +425,9 @@
                     $.ajax({
                         url: '{{ url('/category/prodList') }}?page=' + page,
                         type: 'GET',
-                        success: function (data) {
+                        success: function(data) {
                             // Update the content with the returned HTML
-                            $('#items-container').html(data);
+                            $('#productContainer').html(data);
                         }
                     });
                 });
