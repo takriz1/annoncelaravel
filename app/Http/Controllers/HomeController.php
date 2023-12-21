@@ -70,11 +70,35 @@ class HomeController extends Controller
 
         return view('homecategories', compact('products', 'categories'));
     }
+
+    public function listcategory(){
+        $categories = Category::all();
+        $products = Product::paginate(2);
+        return view('ListCategory', compact('products', 'categories'));
+    }
+    public function cat(Request $request)
+{
+    $query = Product::query();
+
+
+    // Apply search filter
+    if ($request->has('search')) {
+        $query->where('name', 'like', '%' . $request->input('search') . '%');
+    }
+
+    // Paginate the results
+    $items = $query->paginate(2); // Adjust the number as needed
+
+    if ($request->ajax()) {
+        return response()->json(view('items', compact('items'))->render());
+    }
+
+    return view('homecat', compact('items'));
+}
     //  url: '/get-products-by-category?page=' + page + '&idcategory=' + pIdCaregory,
     public function getProductsByCategory(Request $request)
     {
         $categoryId = $request->input('category_id');
-        dd($categoryId);
         $products = Product::where('category_id', $categoryId)->paginate(2);
 
         return view('categoriesProducts', compact('products'));

@@ -75,7 +75,7 @@
             </ul>
         </li>
         <li>
-            <a href="category.html">Categories</a>
+            <a href="/categories">Categories</a>
         </li>
         <li>
             <a href="#">

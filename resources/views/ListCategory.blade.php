@@ -48,9 +48,9 @@
                     <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
                         <aside>
                             <div class="widget_search">
-                                <form role="search" id="search-form">
-                                    <input type="search" class="form-control" autocomplete="off" name="s"
-                                        placeholder="Search..." id="search-input" value="">
+                                <form role="search" action="{{ route('/category/prodList') }}" method="get">
+                                    <input type="text" class="form-control" autocomplete="off" name="search"
+                                    value="{{ request('search') }}" placeholder="Search...">
                                     <button type="submit" id="search-submit" class="search-btn"><i
                                             class="lni-search"></i></button>
                                 </form>
@@ -125,8 +125,8 @@
                             <div class="tab-content">
                                 <div id="list-view" class="tab-pane fade active show">
                                     <div id="productContainer"></div>
-                                    <div id="products-list">
-                                        @include('categoriesProducts')
+                                    <div id="items-container">
+                                        @include('items')
                                     </div>
                                 </div>
                             </div>
@@ -317,7 +317,7 @@
         <script src="{{ asset('mainassets/js/summernote.js') }}"></script>
 
 
-        <!-- Category List + Products Pagination Ajax -->
+        <!-- Category List + Products Pagination Ajax
         <script>
             $(document).ready(function() {
 
@@ -366,6 +366,47 @@
 
                     var page = $(this).attr('href').split('page=')[1];
                     loadProducts(page);
+                });
+            });
+        </script> -->
+
+<!-- Add this inside the head tag of your layout file -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+         <!--- Pagination ajax with Search Filter -->
+         <script>
+            $(document).ready(function () {
+                // Function to handle the form submission
+                $('form').on('submit', function (e) {
+                    e.preventDefault();
+                    let formData = $(this).serialize();
+
+                    // Ajax request to the controller
+                    $.ajax({
+                        url: '{{ route('/category/prodList') }}',
+                        type: 'GET',
+                        data: formData,
+                        success: function (data) {
+                            // Update the content with the returned HTML
+                            $('#items-container').html(data);
+                        }
+                    });
+                });
+
+                // Function to handle pagination links
+                $(document).on('click', '.pagination a', function (e) {
+                    e.preventDefault();
+                    let page = $(this).attr('href').split('page=')[1];
+
+                    // Ajax request to the controller with the page parameter
+                    $.ajax({
+                        url: '{{ route('/category/prodList') }}?page=' + page,
+                        type: 'GET',
+                        success: function (data) {
+                            // Update the content with the returned HTML
+                            $('#items-container').html(data);
+                        }
+                    });
                 });
             });
         </script>

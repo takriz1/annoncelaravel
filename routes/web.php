@@ -24,6 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/categories/{categoryId}/products', [App\Http\Controllers\HomeController::class, 'getProducts']);
 Route::get('/get-products', [HomeController::class, 'Products']); */
 Route::get('/categories', [App\Http\Controllers\HomeController::class, 'categories']);
+Route::get('/category', [App\Http\Controllers\HomeController::class, 'listcategory']);
+Route::get('/category/prodList', [App\Http\Controllers\HomeController::class, 'cat']);
 Route::get('/get-products-by-category', [HomeController::class, 'getProductsByCategory']);
 
 Route::get('homeCategories/productsByCategory/{id}', [App\Http\Controllers\HomeController::class, 'productsByCategory'])
