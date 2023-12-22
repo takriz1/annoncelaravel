@@ -87,7 +87,7 @@
 
                     <!-- products Contents -->
                     <div id="partialProductView">
-                        {{-- @include('partials.partialProducts', $products) --}}
+
 
                     </div>
                 </div>
@@ -280,12 +280,17 @@
 
             //pagination event
             $(document).on('click', '.custom-pagination a', function(e) {
+                //<a class="page-link" href="http://127.0.0.1:8000/homeCategories/productsByCategory/-1?page=2">2</a>
                 e.preventDefault();
 
                 //get url and make final url for ajax
                 var url = $(this).attr("href");
+
                 var append = url.indexOf("?") == -1 ? "?" : "&";
+
                 var finalURL = url + append + $("#search-form").serialize();
+                 // url + append => http://127.0.0.1:8000/homeCategories/productsByCategory/-1?page=2&
+                 // url + append + $("#search-form").serialize(); => http://127.0.0.1:8000/homeCategories/productsByCategory/-1?page=2&searchingWord='MOMA'
                 $.ajax({
                     url: finalURL,
                     success: function(data) {
