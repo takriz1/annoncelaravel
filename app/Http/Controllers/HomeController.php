@@ -44,7 +44,7 @@ class HomeController extends Controller
     public function homeCategories()
     {
         $categories = Category::all();
-        $products = Product::where('state', '=', 'Accepted');
+        $products = Product::where('state', '=', 'Accepted')->paginate(3);
         return view('homeCategories')->with('categories', $categories)->with('products', $products);
     }
 
