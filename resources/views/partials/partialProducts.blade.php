@@ -75,6 +75,4 @@
     </div>
 </div>
 
-{{ $products->links() }}
-
-
+{!! $products->links('partials.partialproductsPagination') !!}

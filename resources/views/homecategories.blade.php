@@ -87,7 +87,7 @@
 
                     <!-- products Contents -->
                     <div id="partialProductView">
-                        @include('partials.partialProducts', $products)
+                        {{-- @include('partials.partialProducts', $products) --}}
 
                     </div>
                 </div>
@@ -216,11 +216,11 @@
         $(document).ready(function() {
 
 
-           /* debugger
+
             //loading page
             $.ajax({
                 type: "GET",
-                url: '{{ route('products.search.show') }}',
+                url: '/homeCategories/productsByCategory/-1',
                 success: function(data) {
                     console.log("partialProductView", data);
                     $('#partialProductView').html(data);
@@ -229,7 +229,7 @@
                     console.log('An error occurred.');
                     console.log(data);
                 },
-            });*/
+            });
 
 
             //Submit Search Form Event NEW
@@ -260,7 +260,7 @@
             // ul change event
             $("#categoriesddl").on("click", "li.searchCategory", function(event) {
                 var catUrl = $(this).attr("url");
-                console.log("catUrl",catUrl)
+                console.log("catUrl", catUrl)
                 $('li').removeClass('active');
                 $(this).addClass('active');
                 $.ajax({
