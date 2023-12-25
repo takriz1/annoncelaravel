@@ -314,6 +314,19 @@
         <script>
             $(document).ready(function() {
 
+                // Loading page (products)
+                $.ajax({
+                    type: "GET",
+                    url: '{{ route('user.posts') }}',
+                    success: function(data) {
+                        $('#clientDashboardPartialView').html(data);
+                    },
+                    error: function(data) {
+                        console.log('An error occurred.');
+                        console.log(data);
+                    },
+                });
+
 
                 $("#clientDashbordNav").on("click", "li.clientDashSideBar", function(event) {
                     $('li').find('a').removeClass('active');

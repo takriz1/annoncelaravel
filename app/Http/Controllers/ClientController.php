@@ -46,4 +46,19 @@ class ClientController extends Controller
                 return   response()->json('Partial View NotFound');
         }
     }
+
+    public function getClientPostsPartialView()
+    {
+        $categories = Category::all();
+        $products = Product::all();
+        return view('partials.partialClientsPosts')->with('categories', $categories)->with('products', $products);
+    }
+
+    public function postDetails($idProduct)
+    {
+        $categories = Category::all();
+        $product = Product::with("user")->find($idProduct);
+        return view('client.postDetails')->with('categories', $categories)->with('product', $product);
+    }
+
 }

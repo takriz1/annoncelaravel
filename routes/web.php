@@ -56,7 +56,7 @@ Route::get('/admin/product/{id}/accepted', [App\Http\Controllers\ProductControll
 Route::get('/user/product/{id}/destroy', [App\Http\Controllers\ProductController::class, 'destroy'])->middleware('auth');
 Route::post('/user/product/edit', [App\Http\Controllers\ProductController::class, 'edit'])->middleware('auth');
 
-//Route::get('/user/account', [App\Http\Controllers\ProductController::class, 'dashboard'])->middleware('auth');
+
 
 
 Route::get('/user/account', [App\Http\Controllers\ClientController::class, 'dashboard'])->middleware('auth');
@@ -73,3 +73,9 @@ Route::get('/user/home', [App\Http\Controllers\ClientController::class, 'home'])
 
 Route::get('/user/partialView/{partialName}', [App\Http\Controllers\ClientController::class, 'getPartialView'])
     ->name('user.partial.view.show')->middleware('auth');
+
+Route::get('/user/posts', [App\Http\Controllers\ClientController::class, 'getClientPostsPartialView'])
+    ->name('user.posts');
+
+Route::get('/user/post/{id}/details', [App\Http\Controllers\ClientController::class, 'postDetails'])->middleware('auth');
+
