@@ -60,10 +60,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-   /* public function category(){
+    /* public function category(){
         return $this->hasMany(Category::class , 'user_id', 'id' );
     }*/
-    public function products(){
-        return $this->hasMany(Product::class , 'product_id', 'id' );
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'product_id', 'id');
     }
 }
