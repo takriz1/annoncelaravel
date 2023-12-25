@@ -79,3 +79,6 @@ Route::get('/user/posts', [App\Http\Controllers\ClientController::class, 'getCli
 
 Route::get('/user/post/{id}/details', [App\Http\Controllers\ClientController::class, 'postDetails'])->middleware('auth');
 
+Route::get('/user/post/{id}/edit/show', [App\Http\Controllers\ClientController::class, 'editPostShow'])->middleware('auth');
+
+Route::post('/user/post/edit', [App\Http\Controllers\ClientController::class, 'editPostSubmit'])->middleware('auth');

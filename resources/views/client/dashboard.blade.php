@@ -223,7 +223,7 @@
                                     <label class="form-label">Product Description </label>
                                     <div class="col-sm-12">
                                         <textarea class="form-control" id="postDescription" rows="3" name="postDescription">
-                                        </textarea>
+                                    </textarea>
 
                                     </div>
                                 </div>
@@ -271,6 +271,7 @@
             </div>
 
 
+
             <div id="copyright">
                 <div class="container">
                     <div class="row">
@@ -312,9 +313,7 @@
 
 
         <script>
-            $(document).ready(function() {
-
-                // Loading page (products)
+            function LoadingPostDataTable() {
                 $.ajax({
                     type: "GET",
                     url: '{{ route('user.posts') }}',
@@ -326,7 +325,108 @@
                         console.log(data);
                     },
                 });
+            }
 
+            $(document).ready(function() {
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+
+                // Loading page (products)
+                LoadingPostDataTable();
+
+                // click edit button
+                $('body').on('click', '#edit-post', function() {
+
+                    var idPost = $(this).data('id');
+
+
+                    /*$.ajax({
+                            type: "GET",
+                            url: '/user/post/' + idPost + '/edit/show',
+                            success: function(data) {
+                             remplissage inputs => modal
+                            },
+                            error: function(data) {
+                                console.log('An error occurred.');
+                                console.log(data);
+                            },
+                        });*/
+
+                    $.get('/user/post/' + idPost + '/edit/show', function(data) {
+
+                        console.log("data", data);
+                        $('#postId').val(data.product.id);
+                        $('#postName').val(data.product.name);
+                        $('#postDescription').val(data.product.description);
+                        $('#postPrice').val(data.product.price);
+                        $('#postQuantity').val(data.product.qtt);
+                        $('#postHiddenImage').val(data.product.image);
+                        $('#postImageDisplay').attr('src', data.product
+                            .image_full_path
+                        ); // TO UPDATE UPDATE AJAX FUNCTION TO SEND  PRODUCT MODAL WITH IMAGE PATH
+
+
+                        $('#editPost').modal('show');
+
+                        console.log(data);
+                    })
+                });
+
+
+                // update product in modal
+                $('#productEditSubmit').click(function(e) {
+                    e.preventDefault();
+
+                    var productToUpdate = {
+                        id: $('#postId').val(),
+                        name: $('#postName').val(),
+                        description: $('#postDescription').val(),
+                        price: $('#postPrice').val(),
+                        qtt: $('#postQuantity').val(),
+                        image: $('#postHiddenImage').val()
+                    };
+
+
+                    console.log("data=>product update", productToUpdate);
+
+
+                    $.ajax({
+                        url: '/user/post/edit',
+                        method: 'post',
+                        data: productToUpdate,
+                        success: function(result) {
+
+                            console.log("result update product", result);
+
+                            if (result.errors) {
+                                $('.alert-danger').html('');
+
+                                $.each(result.errors, function(key, value) {
+                                    $('.alert-danger').show();
+                                    $('.alert-danger').append('<li>' + value +
+                                        '</li>');
+                                });
+                            } else {
+
+                                if (result.code == 1) {
+                                    $('.alert-danger').hide();
+                                    $('#editPost').modal('hide');
+                                    LoadingPostDataTable();
+                                } else {
+                                    $('.alert-danger').append(result.msg);
+                                }
+
+                            }
+
+                        }
+                    });
+
+                });
 
                 $("#clientDashbordNav").on("click", "li.clientDashSideBar", function(event) {
                     $('li').find('a').removeClass('active');

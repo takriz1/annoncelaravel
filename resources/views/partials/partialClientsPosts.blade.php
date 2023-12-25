@@ -68,8 +68,27 @@
                                     <a class="btn-action btn-view" href="/user/post/{{ $p->id }}/details"><i
                                             class="lni-eye"></i></a>
 
-                                    <a class="btn-action btn-edit" href="#"><i class="lni-pencil"></i></a>
-                                    <a class="btn-action btn-delete" href="#"><i class="lni-trash"></i></a>
+
+                                    @switch($p->state)
+                                        @case('InProgress')
+                                            <a href="javascript:void(0)" id="edit-post" data-id="{{ $p->id }}"
+                                                type="button" class="btn-action btn-edit"> <i class="lni-pencil"></i></a>
+                                        @break
+
+                                        @case('Rejected')
+                                            <a href="javascript:void(0)" id="edit-post" data-id="{{ $p->id }}"
+                                                type="button" class="btn-action btn-edit"> <i class="lni-pencil"></i></a>
+                                            <a class="btn-action btn-delete" href="#"><i class="lni-trash"></i></a>
+                                        @break
+
+                                        @default
+                                    @endswitch
+
+
+
+
+
+
                                 </div>
                             </td>
                         </tr>

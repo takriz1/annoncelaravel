@@ -24,9 +24,18 @@ class Product extends Model
         'user_id',
     ];
 
-
+    protected $appends = [
+        'image_full_path'
+    ];
 
     use HasFactory;
+
+    public function getImageFullPathAttribute()
+    {
+        //'uploads/products'
+        return url('/uploads/products/' . $this->image); //http://127.0.0.1:8000/uploads/products/rockrider.jpg"
+    }
+
     public function category()
     {
 
